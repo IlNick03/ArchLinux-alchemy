@@ -1,5 +1,5 @@
 # ArchLinux-alchemy
-A personal vault of [Arch] Linux scripts and ricing procedures, transmuting your Linux into a refined digital experience.
+A personal vault of (Arch) Linux scripts and ricing procedures, transmuting your Linux into a refined digital experience.
 
 ---
 
@@ -39,7 +39,7 @@ This area will soon host detailed Markdown guides and image galleries documentin
 ### 1. Clone the Vault
 To get all scripts, dotfiles, and procedures, clone the repository:
 ```bash
-git clone [https://github.com/ilNick03/ArchLinux-alchemy.git](https://github.com/YourUsername/Arch-alchemy.git)
+git clone [https://github.com/IlNick03/ArchLinux-alchemy.git](https://github.com/YourUsername/Arch-alchemy.git)
 cd ArchLinux-alchemy
 ```
 
