@@ -1,0 +1,38 @@
+# ---- SHELL INTEGRATION APPENDIX & CONFIGURATION ---------------------------------#
+# This file contains global settings to optimize fzf and fd performance.
+# It also provides the necessary alias to run the fzf-music script system-wide.
+#
+# USAGE: 
+# Copy and paste the content below into your shell configuration file:
+# - For Bash: ~/.bashrc
+# - For Zsh:  ~/.zshrc
+#
+# WHY:
+# 1. Enables high-speed file searching with 'fd'.
+# 2. Sets a consistent UI (reverse layout, borders) for all fzf instances.
+# 3. Integrates official key-bindings (CTRL-T, ALT-C).
+# 4. Maps the 'fzf-music' command for instant access.
+# --------------------------------------------------------------------------------#
+
+
+# --- FZF & FD Configuration (Global) ---
+# Use fd for faster, smarter file searching (ignores .git, follows symlinks)
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
+# Global UI: Reverse layout, borders, and clean info line
+# These will be inherited by every fzf instance on your system
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --inline-info'
+
+# Load official key bindings and completion
+# "CTRL + T"  -> search for a file 
+# "CTRL + R"  -> Search for a command in history
+# "ALT + C"   -> search and change directory 
+[[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash
+[[ -f /usr/share/fzf/completion.bash ]] && source /usr/share/fzf/completion.bash
+
+# --- ALIASES ---
+# Gateway to your music vault: invokes the custom "fzf-music" script.
+# Make sure to adjust the path if the script is located elsewhere.
+alias fzf-music='$HOME/fzf-music.sh'
