@@ -31,7 +31,7 @@ AUDIO_OUT=""                 # Leave empty ("") for automatic routing (best for 
 MPV_OPTS="--no-video --audio-display=no \
           --cache=yes --cache-secs=120 \
           --demuxer-max-bytes=14M --demuxer-max-back-bytes=8M \
-          --audio-buffer=0.5 \
+          --audio-buffer=2.0 \
           --msg-level=all=status,ffmpeg/demuxer=fatal,ao=fatal \
           --no-msg-module"
 
