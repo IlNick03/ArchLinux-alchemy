@@ -8,25 +8,58 @@ A personal vault of (*Arch*) *Linux* scripts and ricing procedures, transmuting 
 > [!NOTE]
 > While crafted on *Arch*, most of these scripts and configurations are designed to be universal and will work on any *Linux* distribution, provided the necessary dependencies are met.
 
-### *[fzf-music](./scripts/audio/fzf-music)*
+### *[fzf-music](./scripts/audio/fzf-music/)*
 A minimalistic TUI (Terminal User Interface) ecosystem for music management and shell optimization.
 
 #### *[fzf-music.sh](./scripts/audio/fzf-music.sh)*
 A lightweight script that leverages fuzzy searching for high-fidelity playback.
-* **Features:** Instant metadata preview (*Artist*, *Title*, *Bitrate*, *Size*), multi-selection support, and optimized for Pipewire stability.
-* **Logic:** Designed to provide a "distilled" music experience directly from the terminal, bypassing heavy GUI applications.
+- **Features:**
+  - Minimalistic approach to music, without frills or distractions
+  - Instant metadata preview (*Artist*, *Title*, *Bitrate*, *Size*)
+  - Multi-selection support
+  - Low resource consumption (nearly 100-130 MB of RAM)
+  - Otimized for Pipewire stability.
+- **Logic:** Designed to provide a "distilled" music experience directly from the terminal, bypassing heavy GUI applications.
 
 #### Dependencies
 To transmute code into sound, the following "ingredients" must be present on your system:
-* [fzf](https://github.com/junegunn/fzf): The interactive fuzzy finder.
-* [fd](https://github.com/sharkdp/fd): A simple, fast and user-friendly alternative to 'find'.
-* [mpv](https://mpv.io/): The versatile media player used as the audio engine.
-* [ffmpeg](https://ffmpeg.org/): Specifically `ffprobe`, used for deep metadata extraction.
-* [bc](https://www.gnu.org/software/bc/): Used for precise bitrate and file size calculations.
+- [fzf](https://github.com/junegunn/fzf) - The interactive fuzzy finder
+- [fd](https://github.com/sharkdp/fd) - A simple, fast and user-friendly alternative to 'find'
+- [mpv](https://mpv.io/) - The versatile media player used as the audio engine
+- [ffmpeg](https://ffmpeg.org/) - Specifically `ffprobe`, used for deep metadata extraction
+- [bc](https://www.gnu.org/software/bc/) - Used for precise bitrate and file size calculations.
 
 #### *[shell-integration-appendix.sh](./scripts/audio/fzf-music/shell-integration-appendix.sh)*
 A vital supplement to your shell configuration (`.bashrc` or `.zshrc`).
-* **Purpose:** It bridges your terminal with the script by providing a global alias and optimizing the UI/performance of `fzf` and `fd` system-wide.
+- **Purpose:** It bridges your terminal with the script by providing a global alias and optimizing the UI/performance of `fzf` and `fd` system-wide.
+
+---
+
+### *[appearance/random-wallpaper](./scripts/appearance/random-wallpaper/)*
+A sophisticated automation tool for dynamic desktop aesthetics. Only on ***[KDE Plasma](https://kde.org/en/plasma-desktop/)***.
+
+#### *[random-wallpaper-kde.sh](./scripts/appearance/random-wallpaper-kde.sh)*
+An intelligent script that injects a random visual atmosphere into your workspace.
+- **Features:** Dual-engine logic (favors `fd-find` for speed, falls back to `find`), multi-monitor support via Plasma DBus API, and XDG-compliant path handling.
+- **Logic:** It bridges the gap between static wallpaper settings and a truly generative desktop environment by directly manipulating the Plasma Shell configuration group.
+
+#### Dependencies
+To transmute your desktop visuals, ensure these elements are present:
+- **Required:**
+  - `dbus` - For communication with PlasmaShell
+  - `shuf` - Part of `coreutils`
+  - `find` - Part of `findutils`
+- **Optional (Recommended):**
+  - [fd](https://github.com/sharkdp/fd) - For significantly faster image indexing in large directories.
+
+#### Shell Integration
+To trigger a "visual transmutation" with a simple command, add the following alias to your `.bashrc` or `.zshrc`:
+
+```bash
+alias rdwp='~/random-wallpaper-kde.sh'
+```
+> [!NOTE]
+> Ensure your desktop environment is *KDE Plasma*, and the path matches your script's location.
 
 ---
 
