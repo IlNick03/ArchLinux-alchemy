@@ -35,7 +35,7 @@ A vital supplement to your shell configuration (`.bashrc` or `.zshrc`).
 
 ---
 
-### *[appearance/random-wallpaper](./scripts/appearance/random-wallpaper/)*
+### *[random-wallpaper](./scripts/appearance/random-wallpaper/)*
 A sophisticated automation tool for dynamic desktop aesthetics. Only on ***[KDE Plasma](https://kde.org/en/plasma-desktop/)***.
 
 #### *[random-wallpaper-kde.sh](./scripts/appearance/random-wallpaper-kde.sh)*
