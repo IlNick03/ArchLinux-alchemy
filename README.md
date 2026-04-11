@@ -35,10 +35,10 @@ A vital supplement to your shell configuration (`.bashrc` or `.zshrc`).
 
 ---
 
-### *[random-wallpaper](./scripts/appearance/random-wallpaper/)*
+### *[random-wallpaper](./scripts/desktop-enhancements/random-wallpaper/)*
 A sophisticated automation tool for dynamic desktop aesthetics. Only on ***[KDE Plasma](https://kde.org/en/plasma-desktop/)***.
 
-#### *[random-wallpaper-kde.sh](./scripts/appearance/random-wallpaper-kde.sh)*
+#### *[random-wallpaper-kde.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh)*
 An intelligent script that injects a random visual atmosphere into your workspace.
 - **Features:**
   - Dual-engine logic: favors `fd-find` for speed, falls back to `find` for maximum compatibility
