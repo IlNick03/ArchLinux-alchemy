@@ -35,4 +35,4 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --inline-info'
 # --- ALIASES ---
 # Gateway to your music vault: invokes the custom "fzf-music" script.
 # Make sure to adjust the path if the script is located elsewhere.
-alias fzf-music='$HOME/fzf-music.sh'
+alias fzf-music='$HOME/scripts/audio/fzf-music/fzf-music.sh'
