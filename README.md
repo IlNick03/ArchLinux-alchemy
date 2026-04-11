@@ -40,7 +40,10 @@ A sophisticated automation tool for dynamic desktop aesthetics. Only on ***[KDE 
 
 #### *[random-wallpaper-kde.sh](./scripts/appearance/random-wallpaper-kde.sh)*
 An intelligent script that injects a random visual atmosphere into your workspace.
-- **Features:** Dual-engine logic (favors `fd-find` for speed, falls back to `find`), multi-monitor support via Plasma DBus API, and XDG-compliant path handling.
+- **Features:**
+  - Dual-engine logic: favors `fd-find` for speed, falls back to `find` for maximum compatibility
+  - Multi-monitor support via Plasma DBus API
+  - XDG-compliant path handling.
 - **Logic:** It bridges the gap between static wallpaper settings and a truly generative desktop environment by directly manipulating the Plasma Shell configuration group.
 
 #### Dependencies
