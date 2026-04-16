@@ -37,28 +37,30 @@ MPV_OPTS="--no-video --audio-display=no \
 
 
 # 4. Run FD to find audio files and pipe to FZF
+# Added --delimiter and --with-nth to hide the directory clutter in the main list
 fd -t f -e flac -e wav -e mp3 -e m4a -e aac -e ogg -e opus --follow --hidden . \
     "${MUSIC_PATHS[@]}" 2>/dev/null | \
 fzf -m \
     --header "TAB: Select | ENTER: Play Selection | ESC: Exit | MPV: [< Prev] [> Next] [p Pause]" \
     --height 95% \
     --layout=reverse \
+    --delimiter / --with-nth -1 \
     --preview-window="bottom,45%,border-top,wrap" \
     --preview '
         # Detect preview width and create a solid separator
         cols=${FZF_PREVIEW_COLUMNS:-50}
         line=$(printf "─%.0s" $(seq 1 $cols))
 
-        # Extract basic tags using ffprobe (suppressing demuxer and mimetype warnings)
-        title=$(ffprobe -v error -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 {} 2>/dev/null | sed "s/^[[:space:]]*//;s/[[:space:]]*$//");
-        artist=$(ffprobe -v error -show_entries format_tags=artist -of default=noprint_wrappers=1:nokey=1 {} 2>/dev/null | sed "s/^[[:space:]]*//;s/[[:space:]]*$//");
-
-        # Show Title and Artist if they exist in the first box
-        if [[ -n "$title" || -n "$artist" ]]; then
-            [[ -n "$title" ]] && echo "TITLE:  $title";
-            [[ -n "$artist" ]] && echo "ARTIST: $artist";
-            echo "$line";
-        fi
+        # Extract basic tags from BOTH container (format_tags) and audio stream (stream_tags)
+        title=$(ffprobe -v error -select_streams a:0 -show_entries format_tags=title:stream_tags=title -of default=noprint_wrappers=1:nokey=1 {} 2>/dev/null | awk "NF {print; exit}" | sed "s/^[[:space:]]*//;s/[[:space:]]*$//");
+        artist=$(ffprobe -v error -select_streams a:0 -show_entries format_tags=artist:stream_tags=artist -of default=noprint_wrappers=1:nokey=1 {} 2>/dev/null | awk "NF {print; exit}" | sed "s/^[[:space:]]*//;s/[[:space:]]*$//");
+        
+        # Show Title, Artist and Full Path (Metadata Section)
+        [[ -n "$title" ]] && echo "TITLE:  $title";
+        [[ -n "$artist" ]] && echo "ARTIST: $artist";
+        echo "$line";
+        echo "FILE:   {}";
+        echo "$line";
 
         # File size and duration calculation
         file_size=$(stat -c%s {});
