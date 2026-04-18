@@ -118,6 +118,39 @@ To trigger a "visual metamorphosis" with a simple command, add the following ali
 alias rdwp='~/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh'
 ```
 
+---
+
+
+## 🛠️ Arch fixes
+A collection of specific remedies and configurations to address common (*Arch*) *Linux* issues and system behaviors.
+
+> [!NOTE]
+> While these fixes are essential for an optimized *Arch Linux* experience on mobile hardware (like the *HP Victus* series), the logic is **distro-agnostic**. They will function on any *Linux* distribution that utilizes the standard `/sys/class/` kernel interface.
+
+---
+
+### *[.brightness-controls](./arch-fix-configs/display/.brightness-controls)*
+A low-level interface for precise display backlight manipulation without the need for heavy desktop environment plugins.
+
+- **Features:**
+    - **Raw Kernel Access:** Directly interacts with `/sys/class/backlight/` for near-instant response;
+    - **Percentage-based Logic:** Transmutes raw hardware values into a human-readable 0-100% scale;
+    - **Smart Inspection:** Aliases for quick monitoring of current, maximum, and percentage brightness levels.
+- **Logic:** It bypasses high-level display managers to provide a "pure" CLI method for brightness control, especially useful for minimalist window managers (WMs) or troubleshooting ACPI issues.
+
+#### Dependencies (Ingredients)
+To manipulate the screen's luminosity, the following tools are required:
+- [bc](https://www.gnu.org/software/bc/) - For high-precision mathematical calculations;
+- [coreutils](https://www.gnu.org/software/coreutils/) - Provides `cat` and `tee` for system file interaction;
+- [sed](https://www.gnu.org/software/sed/) - For stream editing and output formatting.
+
+#### Shell Integration
+To bridge your shell with the display hardware, add this line to your `.bashrc` or `.zshrc`:
+
+```bash
+[[ -f "$HOME/arch-fix-configs/display/.brightness-controls" ]]  &&  source "$HOME/arch-fix-configs/display/.brightness-controls"
+```
+
 
 ---
 
