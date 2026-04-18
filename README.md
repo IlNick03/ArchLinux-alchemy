@@ -60,24 +60,32 @@ A minimalistic TUI (Terminal User Interface) ecosystem for music management and 
 #### *[fzf-music.sh](./scripts/audio/fzf-music.sh)*
 A lightweight script that leverages fuzzy searching for high-fidelity playback.
 - **Features:**
-  - Minimalistic approach to music, without frills or distractions;
-  - Instant metadata preview (*Artist*, *Title*, *Bitrate*, *Size*);
-  - Multi-selection support;
-  - Low resource consumption (nearly 100-130 MB of RAM);
-  - Otimized for Pipewire stability.
+    - Minimalistic approach to music, without frills or distractions;
+    - Instant metadata preview (*Artist*, *Title*, *File path*, *Bitrate*, *Size*);
+    - Multi-selection support;
+    - Low resource consumption (nearly 100-130 MB of RAM) while effortlessly managing Hi-Res audio;
+    - Optimized for audio stability in Pipewire;
+    - Adjust the audio settings (*audio server*, *sample rate*) in the script to suit your needs.
 - **Logic:** Designed to provide a "distilled" music experience directly from the terminal, bypassing heavy GUI applications.
 
-#### *[shell-integration-appendix.sh](./scripts/audio/fzf-music/shell-integration-appendix.sh)*
+#### *[.fzf-config](./scripts/audio/fzf-music/.fzf-config)*
 A vital supplement to your shell configuration (`.bashrc` or `.zshrc`).
 - **Purpose:** It bridges your terminal with the script by providing a global alias and optimizing the UI/performance of `fzf` and `fd` system-wide.
 
 #### Dependencies (Ingredients)
-To transmute code into sound, the following "ingredients" must be present on your system:
+To translate the code into sound, the following "ingredients" must be present on your system:
 - [fzf](https://github.com/junegunn/fzf) - The interactive fuzzy finder;
 - [fd](https://github.com/sharkdp/fd) - A simple, fast and user-friendly alternative to 'find';
 - [mpv](https://mpv.io/) - The versatile media player used as the audio engine;
 - [ffmpeg](https://ffmpeg.org/) - Specifically `ffprobe`, used for deep metadata extraction;
 - [bc](https://www.gnu.org/software/bc/) - Used for precise bitrate and file size calculations.
+
+#### Shell Integration
+Add the following line to your ~/.zshrc or ~/.bashrc:
+
+```bash
+[[ -f "$HOME/scripts/audio/fzf-music/.fzf-config" ]]  &&  source "$HOME/scripts/audio/fzf-music/.fzf-config"
+```
 
 ---
 
@@ -89,30 +97,26 @@ An intelligent script that injects a random visual atmosphere into your workspac
 Works only on ***[KDE Plasma](https://kde.org/en/plasma-desktop/)***.
 
 - **Features:**
-  - Dual-engine logic: favors `fd-find` for speed, falls back to `find` for maximum compatibility;
-  - Multi-monitor support via Plasma DBus API;
-  - XDG-compliant path handling.
+    - Dual-engine logic: favors `fd-find` for speed, falls back to `find` for maximum compatibility;
+    - Multi-monitor support via Plasma DBus API;
+    - XDG-compliant path handling.
 - **Logic:** It bridges the gap between static wallpaper settings and a truly generative desktop environment by directly manipulating the Plasma Shell configuration group.
 
 #### Dependencies (Ingredients)
 To transmute your desktop visuals, ensure these elements are present:
 - **Required:**
-  - `dbus` - For communication with PlasmaShell;
-  - `shuf` - Part of `coreutils`;
-  - `find` - Part of `findutils`.
+    - [dbus](https://gitlab.freedesktop.org/dbus/dbus/) - For communication with PlasmaShell;
+    - [shuf](https://www.gnu.org/software/coreutils/) - Part of `coreutils`;
+    - [find](https://www.gnu.org/software/findutils/) - Part of `findutils`.
 - **Optional (Recommended):**
-  - [fd](https://github.com/sharkdp/fd) - For significantly faster image indexing in large directories;
-  - [coreutils](https://www.gnu.org/software/coreutils/) - Provides `shuf` for randomization.
+    - [fd](https://github.com/sharkdp/fd) - For significantly faster image indexing in large directories;
 
 #### Shell Integration
-To trigger a "visual transmutation" with a simple command, add the following alias to your `.bashrc` or `.zshrc`:
+To trigger a "visual metamorphosis" with a simple command, add the following alias to your `.bashrc` or `.zshrc`:
 
 ```bash
 alias rdwp='~/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh'
 ```
-
-> [!NOTE]
-> Ensure your desktop environment is *KDE Plasma*, and the path matches your script's location.
 
 
 ---
