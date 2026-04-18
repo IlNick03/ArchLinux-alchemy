@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ---- SHELL INTEGRATION APPENDIX & CONFIGURATION ---------------------------------#
 # This file contains global settings to optimize fzf and fd performance.
 # It also provides the necessary alias to run the fzf-music script system-wide.
@@ -29,8 +31,19 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --inline-info'
 # "CTRL + T"  -> search for a file 
 # "CTRL + R"  -> Search for a command in history
 # "ALT + C"   -> search and change directory 
-[[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash
-[[ -f /usr/share/fzf/completion.bash ]] && source /usr/share/fzf/completion.bash
+if [ -n "$ZSH_VERSION" ]; then
+    # --- ZSH SPECIFIC CONFIGURATION ---
+    # Load official fzf key bindings and completion for Zsh
+    [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+    [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
+
+elif [ -n "$BASH_VERSION" ]; then
+    # --- BASH SPECIFIC CONFIGURATION ---
+    # Load official fzf key bindings and completion for Bash
+    [[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash
+    [[ -f /usr/share/fzf/completion.bash ]] && source /usr/share/fzf/completion.bash
+    
+fi
 
 # --- ALIASES ---
 # Gateway to your music vault: invokes the custom "fzf-music" script.
