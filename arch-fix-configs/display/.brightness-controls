@@ -1,0 +1,40 @@
+#!/bin/bash
+# Copyright (C) 2026, Nicolas Scalese
+# Licensed under the GNU GPL v3 or later. Info:  https://www.gnu.org/licenses/gpl-3.0.html
+
+# --- DISPLAY BRIGHTNESS CLI MANAGEMENT ---
+
+# Aliases for quick brightness inspection
+alias getbright='cat /sys/class/backlight/*/brightness'
+alias maxbright='cat /sys/class/backlight/*/max_brightness'
+alias brightperc='echo "scale=2; ($(getbright) * 100 / $(maxbright))" | bc | sed "s/^\./0./" | sed "s/$/%/"'
+
+# Set screen brightness by percentage (0-100)
+# Usage: setbright [value]
+setbright() {
+    # Check if a parameter was provided
+    if [[ -z "$1" ]]; then
+        echo "Error: No value provided. Usage: setbright [0-100]"
+        return 1
+    fi
+    # Check if the input is a valid integer
+    if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+        echo "Error: '$1' is not a valid integer."
+        return 1
+    fi
+    # Validate that the percentage is between 0 and 100
+    if (( "$1" < 0 || "$1" > 100 )); then
+        echo "Error: Percentage must be between 0 and 100."
+        return 1
+    fi
+
+    # Calculate the absolute value based on max_brightness
+    local max=$(cat /sys/class/backlight/*/max_brightness)
+    local new_value=$(( $1 * $max / 100 ))
+    
+    # Write the new value to the system brightness file
+    # Note: Using 'tee' with sudo to bypass permission restrictions
+    echo "$new_value" | sudo tee /sys/class/backlight/*/brightness > /dev/null
+    
+    echo "Brightness successfully set to $1% ($new_value/$max)"
+}
