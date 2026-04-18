@@ -1,20 +1,19 @@
 #!/bin/bash
 
-# ---- SHELL INTEGRATION APPENDIX & CONFIGURATION ---------------------------------#
-# This file contains global settings to optimize fzf and fd performance.
-# It also provides the necessary alias to run the fzf-music script system-wide.
+# ---- FZF CONFIGURATION & SHELL INTEGRATION ------------------------------------------------------------------------#
+# This file centralizes global settings to enhance fzf look and performance.
 #
-# USAGE: 
-# Copy and paste the content below into your shell configuration file:
-# - For Bash: ~/.bashrc
-# - For Zsh:  ~/.zshrc
+# INSTALLATION:
+# Add the following line to your ~/.zshrc or ~/.bashrc:
+#
+#   [[ -f "$HOME/scripts/audio/fzf-music/.fzf-config" ]]  &&  source "$HOME/scripts/audio/fzf-music/.fzf-config"
 #
 # WHY:
-# 1. Enables high-speed file searching with 'fd'.
-# 2. Sets a consistent UI (reverse layout, borders) for all fzf instances.
-# 3. Integrates official key-bindings (CTRL-T, ALT-C).
-# 4. Maps the 'fzf-music' command for instant access.
-# --------------------------------------------------------------------------------#
+# 1. High-speed file searching with 'fd' (ignores .git, follows symlinks).
+# 2. Consistent UI (reverse layout, borders) for all fzf instances.
+# 3. Native key-bindings (CTRL-T: files, ALT-C: folders, CTRL-R: history).
+# 4. Instant system-wide access to 'fzf-music'.
+# -------------------------------------------------------------------------------------------------------------------#
 
 
 # --- FZF & FD Configuration (Global) ---
