@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (C) 2026, Nicolas Scalese
+# Licensed under the GNU GPL v3 or later. Info:  https://www.gnu.org/licenses/gpl-3.0.html
 
 # --- GLOBAL ENVIRONMENT SETTINGS ---
 export PIPEWIRE_DEBUG=0               # Disable Pipewire debug output for a cleaner terminal
