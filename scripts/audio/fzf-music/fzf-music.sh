@@ -43,7 +43,7 @@ MPV_OPTS="--no-video --audio-display=no \
 fd -t f -e flac -e wav -e mp3 -e m4a -e aac -e ogg -e opus --follow --hidden . \
     "${MUSIC_PATHS[@]}" 2>/dev/null | \
 fzf -m \
-    --header "TAB: Select | ENTER: Play Selection | ESC: Exit | MPV: [< Prev] [> Next] [p Pause]" \
+    --header "TAB: Select | ENTER: Play ('mpv') | ALT+C: Clear search | ESC: Exit" \
     --height 95% \
     --layout=reverse \
     --delimiter / --with-nth -1 \
@@ -86,6 +86,6 @@ fzf -m \
         echo "size=$size_mb MB"
     ' \
     --bind "enter:execute(stty -echoctl; sleep 0.5; mpv $AUDIO_OUT $MPV_OPTS {+})" \
-    --bind "enter:+clear-query" \
     --bind "enter:+deselect-all" \
-    --bind "enter:+first"
+    --bind "enter:+first" \
+    --bind "alt-c:clear-query"
