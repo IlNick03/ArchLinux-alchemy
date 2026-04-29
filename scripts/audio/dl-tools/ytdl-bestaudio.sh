@@ -2,6 +2,7 @@
 # Copyright (C) 2026, Nicolas Scalese
 # Licensed under the GNU GPL v3 or later. Info:  https://www.gnu.org/licenses/gpl-3.0.html
 
+
 # --- Universal Best Audio Extractor (Auto-Title & Codec-Sensing) ---
 # Syntax:    ytdl-bestaudio <URL> [custom_filename] [output_folder]
 
