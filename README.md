@@ -121,31 +121,64 @@ Add the following line to your ~/.zshrc or ~/.bashrc:
 ### *[desktop-enhancements/random-wallpaper](./scripts/desktop-enhancements/random-wallpaper/)*
 A sophisticated automation tool for dynamic desktop aesthetics.
 
-#### *[random-wallpaper-kde.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh)*
-An intelligent script that injects a random visual atmosphere into your workspace.
-Works only on ***[KDE Plasma](https://kde.org/en/plasma-desktop/)***.
+
+#### *[random-wallpaper-hypr.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-hypr.sh)*
+An advanced script designed for ***[Hyprland](https://hyprland.org/)*** that orchestrates a visual metamorphosis through `hyprpaper`.
 
 - **Features:**
-    - Dual-engine logic: favors `fd-find` for speed, falls back to `find` for maximum compatibility;
-    - Multi-monitor support via Plasma DBus API;
-    - XDG-compliant path handling.
+    - **Symlink Masking Strategy:** Transmutes the selected image into a temporary symlink to bypass path issues (spaces/special characters) and force a buffer refresh;
+    - **Multi-Monitor Sychronization:** Automatically detects all active monitors and applies the new atmosphere simultaneously;
+    - **Memory Purging:** Intelligent cleanup that unloads unused textures from the GPU to maintain a lean system state.
+
+##### Dependencies (Ingredients)
+- [hyprpaper](https://github.com/hyprwm/hyprpaper) - The wallpaper utility for Hyprland;
+- [hyprctl](https://wiki.hypr.land/Configuring/Using-hyprctl/) - For IPC communication with the compositor;
+- [zsh](https://www.zsh.org/) - The script leverages advanced Zsh array expansion.
+
+##### Shell Integration
+```bash
+alias rdhypr='~/scripts/desktop-enhancements/random-wallpaper/random-wallpaper-hypr.sh'
+```
+
+
+#### *[random-wallpaper-kde.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh)*
+An intelligent script that injects a random visual atmosphere into your workspace. Works only on ***[KDE Plasma](https://kde.org/en/plasma-desktop/)***.
+
+- **Features:**
+    - Favors `fd-find` for speed, falls back to `find` for maximum compatibility;
+    - **Multi-monitor support** via Plasma DBus API;
+    - **XDG-compliant path handling**.
 - **Logic:** It bridges the gap between static wallpaper settings and a truly generative desktop environment by directly manipulating the Plasma Shell configuration group.
 
-#### Dependencies (Ingredients)
+##### Dependencies (Ingredients)
 To transmute your desktop visuals, ensure these elements are present:
-- **Required:**
     - [dbus](https://gitlab.freedesktop.org/dbus/dbus/) - For communication with PlasmaShell;
     - [shuf](https://www.gnu.org/software/coreutils/) - Part of `coreutils`;
-    - [find](https://www.gnu.org/software/findutils/) - Part of `findutils`.
-- **Optional (Recommended):**
-    - [fd](https://github.com/sharkdp/fd) - For significantly faster image indexing in large directories;
+    - [fd](https://github.com/sharkdp/fd) or [find](https://www.gnu.org/software/findutils/) - For image indexing.
 
-#### Shell Integration
-To trigger a "visual metamorphosis" with a simple command, add the following alias to your `.bashrc` or `.zshrc`:
-
+##### Shell Integration
 ```bash
-alias rdwp='~/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh'
+alias rdkde='~/scripts/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh'
 ```
+
+
+#### *[random-wallpaper-swaybg.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-swaybg.sh)*
+A lightweight, resource-efficient manifestation of desktop aesthetics for wlroots-based compositors.
+
+- **Features:**
+    - **Minimalist Lifecycle:** Instantly replaces the background plane by terminating old instances and spawning a new `swaybg` process;
+    - **Atomic Application:** Simple "fill" logic for immediate visual results without complex daemon management.
+
+##### Dependencies (Ingredients)
+- [swaybg](https://github.com/swaywm/swaybg) - The lightweight wallpaper renderer for Wayland;
+- [fd](https://github.com/sharkdp/fd) or [find](https://www.gnu.org/software/findutils/) - For image indexing.
+
+##### Shell Integration
+```bash
+alias rdsway='~/scripts/desktop-enhancements/random-wallpaper/random-wallpaper-swaybg.sh'
+```
+
+
 
 ---
 
