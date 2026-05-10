@@ -13,7 +13,7 @@ A personal vault of (*Arch*) *Linux* scripts and ricing procedures, transmuting 
 ---
 
 ### *[audio/dl-tools](./scripts/audio/dl-tools)*
-A precision toolset for distilling high-quality digital audio from the web aether.
+A precision toolset for distilling high-quality digital audio from the web aether, relying on [yt-dlp](https://github.com/yt-dlp/yt-dlp) as core engine.
 
 > [!WARNING]
 > **Legal Disclaimer**: 
@@ -21,36 +21,65 @@ A precision toolset for distilling high-quality digital audio from the web aethe
 > Use these scripts at your own risk and responsibility.
 > The author does not condone or encourage the unauthorized downloading of copyrighted material and is not liable for any misuse of this software that violates the Terms of Service of any media provider or local jurisdiction laws.
 
+
+
+#### *[mpv-webaudio.sh](./scripts/audio/dl-tools/mpv-webaudio.sh)*
+A streamlined solution for seizing and catching web audio streams real-time web audio, directly via terminal, without the weight of a browser or local storage.
+
+- **Features:**
+  - **Zero-Footprint Streaming:** Pipes the raw audio data from `yt-dlp` directly into `mpv`, bypassing the need to create temporary files;
+  - **Optimized Buffering:** Pre-configured with specific cache and demuxer limits to ensure stable playback even on fluctuating connections;
+  - **Headless Operation:** Forces a no-video, no-display mode to minimize CPU and RAM usage, focusing purely on the auditory experience.
+
+##### Dependencies (Ingredients)
+To achieve seamless real-time streaming, ensure these elements are active:
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - The extraction engine;
+- [mpv](https://mpv.io/) - The high-performance media renderer used for output.
+
+##### Shell Integration
+Add this alias to your `.bashrc` or `.zshrc`:
+
+```bash
+alias mpv-webaudio='~/scripts/audio/dl-tools/mpv-webaudio.sh'
+```
+
+
 #### *[ytdl-bestaudio.sh](./scripts/audio/dl-tools/ytdl-bestaudio.sh)*
 A sophisticated wrapper for `yt-dlp` designed to isolate, extract, and verify the highest quality audio streams available.
 
 - **Features:**
-  - **Smart Codec-Sensing:** Uses `ffprobe` to analyze the internal stream and assign the mathematically correct extension (e.g., `.opus`, `.aac`) rather than a generic container name;
-  - **Path Sanitization:** Automatically transmutes illegal characters (like `/`) in web titles into shell-safe symbols to prevent directory errors;
-  - **Best-quality Priority:** Ensures the best lossy compression ratio available;
-  - **Atomic Operations:** Uses PID-based temporary files to allow multiple concurrent extractions without data collision.
+    - **Smart Codec-Sensing:** Uses `ffprobe` to analyze the internal stream and assign the mathematically correct extension (e.g., `.opus`, `.aac`) rather than a generic container name;
+    - **Path Sanitization:** Automatically transmutes illegal characters (like `/`) in web titles into shell-safe symbols to prevent directory errors;
+    - **Best-quality Priority:** Ensures the best lossy compression ratio available;
+    - **Atomic Operations:** Uses PID-based temporary files to allow multiple concurrent extractions without data collision.
 
-#### Dependencies (Ingredients)
+##### Dependencies (Ingredients)
 To correctly retrieve and verify audio streams, the following "ingredients" must be present:
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) - The core engine for media extraction. Always keep it updated (`yt-dlp --update`);
 - [ffmpeg](https://ffmpeg.org/) - Specifically `ffmpeg` for extraction and `ffprobe` for stream analysis;
 - [bun](https://bun.sh/) or [deno](https://deno.com/) (Optional but strongly recommended) - High-performance JS runtimes to solve provider challenges and avoid `HTTP 403` errors;
 - [coreutils](https://www.gnu.org/software/coreutils/) - Provides `shuf` and `sed` for title sanitization and randomization.
 
-#### Shell Integration
+##### Shell Integration
 Add this alias to your `.bashrc` or `.zshrc` for instant access:
 
 ```bash
 alias ytdl-bestaudio='~/scripts/audio/dl-tools/ytdl-bestaudio.sh'
 ```
 
-#### 💡 Expert Usage & Troubleshooting
-To ensure a successful fetching of web streams, follow these alchemical principles:
+
+### 💡 Expert Lessons & Troubleshooting (Bonus)
+To ensure a successful fetching of web streams, follow these principles:
 
 1.  **Keep the Engine Sharp** - Platforms like *YouTube* update their defenses daily. If a download fails, ensure your engine is up to date: `yt-dlp -update`;
 2.  **The "Warm-up" Technique** - For videos protected by modern challenges (PO-Tokens), open the URL in your browser (e.g., *[LibreWolf](https://librewolf.net/)*) and let the media play for a few seconds. This "warms up" your IP and session, clearing the path for the script;
 3.  **Quote the URL** - Always wrap the web link in double quotes when launching the script to prevent the shell from misinterpreting special characters like `&` or `?`.
     Example:  `ytdl-bestaudio "https://www.youtube.com/watch?v=..."`
+4.  **The "*IP*-Flagging" Reality** – Intense use of these tools may trigger **HTTP 4xx errors** (typically 403 or 429). This happens when the provider's server flags your IP address for unusual traffic. To dissolve this block:
+    - **The "Warm-up" Technique**: Open the URL in your browser (e.g., *[LibreWolf](https://librewolf.net/)*) and play the media for a few seconds. This validates your session;
+    - **Authentication**: Consider passing cookies from your browser to the script (e.g., using `--cookies-from-browser`);
+    - **Metamorphosis**: Change your digital signature by toggling a ***VPN*** or reconnecting your router to obtain a fresh *IP*;
+    - **Patience**: Sometimes, the best remedy is simply to wait a few hours for the "heat" on your *IP* to dissipate.
 
 ---
 
