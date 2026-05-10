@@ -1,11 +1,12 @@
 # ArchLinux-alchemy
-A personal vault of (*Arch*) *Linux* scripts and ricing procedures, transmuting your OS into a refined digital experience.
+A personal vault of (*Arch*) *Linux* scripts and ricing procedures, exploring the hidden, magic potential behind your *OS* and transmuting it into a refined digital experience.
+
 
 
 ---
 
 
-## 🧪 Scripts and dotfiles
+## 🧪 Easy and powerful Scripts
 
 > [!NOTE]
 > While crafted on *Arch*, most of these scripts and configurations are designed to be universal and will work on any *Linux* distribution, provided the necessary dependencies are met.
@@ -212,7 +213,38 @@ alias power-calc='~/scripts/utils/power-calc.sh'
 ```
 
 
+
 ---
+
+
+## 🏺 Essence & Configurations (Dotfiles)
+A collection of primordial configurations and dotfiles that define the behavior, aesthetics, and interaction logic of the digital environment.
+
+---
+
+### *[yazi](./various-dotfiles/.config/yazi/yazi.toml)*
+A highly customized configuration for the [Yazi](https://github.com/sxyazi/yazi) terminal file manager, transmuted to act as a central hub for media and text.
+
+- **Features:**
+    - **Advanced TMUX Integration:** Spawns a dedicated audio viewport at the bottom of the terminal, allowing high-fidelity playback while keeping the file manager active;
+    - **MIME-Smart Routing:** Automatically distinguishes between raw text, visual scrying, and compressed matter;
+    - **Persistent Orphans:** GUI applications (like Ark or IMV) are launched as independent entities, surviving the closure of the parent terminal;
+    - **Audiophile-Grade MPV:** Pre-configured with optimized Pipewire buffers and cache limits for glitch-free auditory experiences.
+
+##### Dependencies (Ingredients)
+To fully manifest these functionalities, ensure the following are installed:
+- [yazi](https://github.com/sxyazi/yazi) - The terminal file manager;
+- [tmux](https://github.com/tmux/tmux) - Required for the split-view audio player;
+- [mpv](https://mpv.io/) - The core engine for high-fidelity audio rendering;
+- [imv](https://github.com/eunomia/imv) - For lightweight, detached image viewing;
+- [ark](https://apps.kde.org/ark/) - For GUI-based archive management;
+- [micro](https://micro-editor.github.io/) - The default terminal scribe (editor).
+
+##### Manual Installation
+Place the file in your local configuration vault:
+```bash
+cp ./various-dotfiles/.config/yazi/yazi.toml ~/.config/yazi/yazi.toml
+```
 
 
 
@@ -248,6 +280,7 @@ To bridge your shell with the display hardware, add this line to your `.bashrc` 
 ```bash
 [[ -f "$HOME/arch-fix-configs/display/.brightness-controls" ]]  &&  source "$HOME/arch-fix-configs/display/.brightness-controls"
 ```
+
 
 
 ---
