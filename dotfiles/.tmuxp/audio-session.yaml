@@ -1,3 +1,7 @@
+# Copyright (C) 2026, Nicolas Scalese
+# Licensed under the GNU GPL v3 or later.
+
+
 # --- RECURSIVE ARCHITECTURAL LAYOUT ---
 # This configuration bypasses standard grid constraints by manually 
 # orchestrating precise splits and command injections from a single master pane.
