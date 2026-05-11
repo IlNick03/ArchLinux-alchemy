@@ -98,7 +98,7 @@ A lightweight script that leverages fuzzy searching for high-fidelity playback.
     - Adjust the audio settings (*audio server*, *sample rate*) in the script to suit your needs.
 - **Logic:** Designed to provide a "distilled" music experience directly from the terminal, bypassing heavy GUI applications.
 
-#### *[.fzf-config](./scripts/audio/fzf-music/.fzf-config)*
+#### *[.fzf-config](./dotfiles/shell/custom/fzf/.fzf-config)*
 A vital supplement to your shell configuration (`.bashrc` or `.zshrc`).
 - **Purpose:** It bridges your terminal with the script by providing a global alias and optimizing the UI/performance of `fzf` and `fd` system-wide.
 
@@ -325,7 +325,7 @@ A collection of specific remedies and configurations to address common (*Arch*) 
 
 ---
 
-### *[.brightness-controls](./arch-fix-configs/display/.brightness-controls)*
+### *[.brightness-controls](./dotfiles/shell/custom/.brightness-controls)*
 A low-level interface for precise display backlight manipulation without the need for heavy desktop environment plugins.
 
 - **Features:**
