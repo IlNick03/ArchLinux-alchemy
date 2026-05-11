@@ -14,8 +14,8 @@ audio-session() {
         while tmux has-session -t audio-session 2>/dev/null; do sleep 0.1; done
     fi
 
-    # Phase 2: Path validation for music storage (SD Card vs. Home)
-    local sd_path="/run/media/nicolas/Scheda SD"
+    # Phase 2: Path validation for music storage (Custom vs. Home)
+    local sd_path="$HOME/Music/MyFavouriteMusic"    # Change here your default music archive path
     local final_dir="${sd_path}"
     [[ ! -d "$sd_path" ]] && final_dir="$HOME"
     
