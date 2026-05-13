@@ -7,7 +7,7 @@
 ---
 
 
-## *[audio/dl-tools](./scripts/audio/dl-tools)*
+## *[audio/dl-tools](./audio/dl-tools)*
 A precision toolset for distilling high-quality digital audio from the web aether, relying on [yt-dlp](https://github.com/yt-dlp/yt-dlp) as core engine.
 
 > [!WARNING]
@@ -17,7 +17,7 @@ A precision toolset for distilling high-quality digital audio from the web aethe
 > The author does not condone or encourage the unauthorized downloading of copyrighted material and is not liable for any misuse of this software that violates the Terms of Service of any media provider or local jurisdiction laws.
 
 
-### *[mpv-webaudio.sh](./scripts/audio/dl-tools/mpv-webaudio.sh)*
+### *[mpv-webaudio.sh](./audio/dl-tools/mpv-webaudio.sh)*
 A streamlined solution for seizing and catching web audio streams real-time web audio, directly via terminal, without the weight of a browser or local storage.
 
 - **Features:**
@@ -38,7 +38,7 @@ alias mpv-webaudio='~/scripts/audio/dl-tools/mpv-webaudio.sh'
 ```
 
 
-### *[ytdl-bestaudio.sh](./scripts/audio/dl-tools/ytdl-bestaudio.sh)*
+### *[ytdl-bestaudio.sh](./audio/dl-tools/ytdl-bestaudio.sh)*
 A sophisticated wrapper for `yt-dlp` designed to isolate, extract, and verify the highest quality audio streams available.
 
 - **Features:**
@@ -79,11 +79,11 @@ To ensure a successful fetching of web streams, follow these principles:
 ---
 
 
-## *[audio/fzf-music](./scripts/audio/fzf-music/)*
+## *[audio/fzf-music](./audio/fzf-music/)*
 A minimalistic TUI (Terminal User Interface) ecosystem for music management and shell optimization.
 
 
-### *[fzf-music.sh](./scripts/audio/fzf-music.sh)*
+### *[fzf-music.sh](./audio/fzf-music.sh)*
 A lightweight script that leverages fuzzy searching for high-fidelity playback.
 - **Features:**
     - Minimalistic approach to music, without frills or distractions;
@@ -110,18 +110,18 @@ To translate the code into sound, the following "ingredients" must be present on
 Add the following line to your ~/.zshrc or ~/.bashrc:
 
 ```bash
-[[ -f "$HOME/dotfiles/shell/custom/fzf/.fzf-config" ]]  &&  source "$HOME/dotfiles/shell/custom/fzf/.fzf-config"
+[[ -f "$HOME/scripts/dotfiles/shell/custom/fzf/.fzf-config" ]]  &&  source "$HOME/scripts/dotfiles/shell/custom/fzf/.fzf-config"
 ```
 
 
 ---
 
 
-## *[desktop-enhancements/random-wallpaper](./scripts/desktop-enhancements/random-wallpaper/)*
+## *[desktop-enhancements/random-wallpaper](./desktop-enhancements/random-wallpaper/)*
 A sophisticated automation tool for dynamic desktop aesthetics.
 
 
-### *[random-wallpaper-hypr.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-hypr.sh)*
+### *[random-wallpaper-hypr.sh](./desktop-enhancements/random-wallpaper/random-wallpaper-hypr.sh)*
 An advanced script designed for ***[Hyprland](https://hyprland.org/)*** that orchestrates a visual metamorphosis through `hyprpaper`.
 
 - **Features:**
@@ -142,7 +142,7 @@ alias rdhypr='~/scripts/desktop-enhancements/random-wallpaper/random-wallpaper-h
 ```
 
 
-### *[random-wallpaper-kde.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh)*
+### *[random-wallpaper-kde.sh](./desktop-enhancements/random-wallpaper/random-wallpaper-kde.sh)*
 An intelligent script that injects a random visual atmosphere into your workspace. Works only on ***[KDE Plasma](https://kde.org/en/plasma-desktop/)***.
 
 - **Features:**
@@ -165,7 +165,7 @@ alias rdkde='~/scripts/desktop-enhancements/random-wallpaper/random-wallpaper-kd
 ```
 
 
-### *[random-wallpaper-swaybg.sh](./scripts/desktop-enhancements/random-wallpaper/random-wallpaper-swaybg.sh)*
+### *[random-wallpaper-swaybg.sh](./desktop-enhancements/random-wallpaper/random-wallpaper-swaybg.sh)*
 A lightweight, resource-efficient manifestation of desktop aesthetics for wlroots-based compositors.
 
 - **Features:**
@@ -187,11 +187,11 @@ alias rdsway='~/scripts/desktop-enhancements/random-wallpaper/random-wallpaper-s
 ---
 
 
-## *[utils](./scripts/utils/)*
+## *[utils](./utils/)*
 A diverse compendium of general-purpose artifacts and tactical scripts, crafted to solve the myriad of small challenges that arise within the digital realm.
 
 
-### *[utils/power-calc.sh](./scripts/utils/power-calc.sh)*
+### *[utils/power-calc.sh](./utils/power-calc.sh)*
 A high-precision analytical tool to measure and deconstruct the energy efficiency of your mobile workstation.
 
 - **Features:**
@@ -209,5 +209,5 @@ A high-precision analytical tool to measure and deconstruct the energy efficienc
 Add the following line to your ~/.zshrc or ~/.bashrc:
 
 ```bash
-alias power-calc='~/scripts/utils/power-calc.sh'
+alias power-calc='~/utils/power-calc.sh'
 ```
