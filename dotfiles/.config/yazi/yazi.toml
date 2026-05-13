@@ -18,8 +18,8 @@ play_music = [
 # --- Visual Scrying (Image Viewing) ---
 # Opens the image in 'imv', detached as an orphan process to ensure persistence.
 open_image = [
-    #{ run = 'xdg-open "$@"', desc = "Open Image" }                # With system default application
-    { run = 'imv-dir "$@"', orphan = true, desc = "IMV Viewer" }   # With 'imv', separate window
+    #{ run = 'xdg-open "$@"', desc = "Open Image" }                # Using system default application
+    { run = 'imv-dir "$@"', orphan = true, desc = "IMV Viewer" }   # Using 'imv', separate window
 ]
 
 # --- Archive Extraction/Management ---
@@ -42,30 +42,30 @@ rules = [
     { mime = "application/x-7z-compressed", use = "ark_gui" },
     { mime = "application/x-rar", use = "ark_gui" },
     { mime = "application/x-tar", use = "ark_gui" },
-    { name = "*.zip",  use = "ark_gui" },
-    { name = "*.7z",   use = "ark_gui" },
-    { name = "*.tar*", use = "ark_gui" },
-    { name = "*.rar",  use = "ark_gui" },
-    { name = "*.iso",  use = "ark_gui" },
+    { url = "*.zip",  use = "ark_gui" },
+    { url = "*.7z",   use = "ark_gui" },
+    { url = "*.tar*", use = "ark_gui" },
+    { url = "*.rar",  use = "ark_gui" },
+    { url = "*.iso",  use = "ark_gui" },
 
     # --- 3. IMAGES ---
     { mime = "image/*", use = "open_image" },
 
     # --- 4. AUDIO ---
-    { name = "*.flac", use = "play_music" },
-    { name = "*.wav",  use = "play_music" },
-    { name = "*.mp3",  use = "play_music" },
-    { name = "*.m4a",  use = "play_music" },
-    { name = "*.aac",  use = "play_music" },
-    { name = "*.ogg",  use = "play_music" },
-    { name = "*.opus", use = "play_music" },
     { mime = "audio/*", use = "play_music" },
+    { url = "*.flac", use = "play_music" },
+    { url = "*.wav",  use = "play_music" },
+    { url = "*.mp3",  use = "play_music" },
+    { url = "*.m4a",  use = "play_music" },
+    { url = "*.aac",  use = "play_music" },
+    { url = "*.ogg",  use = "play_music" },
+    { url = "*.opus", use = "play_music" },
 
     # --- 5. TEXT ---
     { mime = "text/*",  use = "edit" },
-    { name = "*.md",    use = "edit" },
-    { name = "*.toml",  use = "edit" },
-    { name = "*.conf",  use = "edit" },
-    { name = "*.txt",   use = "edit" },
-    { name = "*.sh",    use = "edit" }
+    { url = "*.md",    use = "edit" },
+    { url = "*.toml",  use = "edit" },
+    { url = "*.conf",  use = "edit" },
+    { url = "*.txt",   use = "edit" },
+    { url = "*.sh",    use = "edit" }
 ]
