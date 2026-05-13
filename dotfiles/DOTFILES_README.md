@@ -194,7 +194,7 @@ The "Fuzzy Engine" core—a centralized configuration that transmutes standard t
 - [fzf-music.sh](./scripts/audio/fzf-music/fzf-music.sh) - A wrapper for *[fzf](https://github.com/junegunn/fzf)* and *[mpv](https://mpv.io/)*, for instant & lightweight music research and playing.
 
 #### Shell Integration
-To activate this search engine within your environment, add the following line to your $$$~/.zshrc$$$ or $$$~/.bashrc$$$:
+To activate this search engine within your environment, add the following line to your `~/.zshrc` or `~/.bashrc`:
 
 ```bash
 [[ -f "$HOME/dotfiles/shell/custom/fzf/.fzf-config" ]] && source "$HOME/dotfiles/shell/custom/fzf/.fzf-config"
