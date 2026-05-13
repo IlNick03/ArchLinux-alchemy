@@ -120,7 +120,31 @@ cp ./dotfiles/.config/yazi/yazi.toml ~/.config/yazi/yazi.toml
 
 
 
-## *[CUSTOM dotfiles for the Shell](./dotfiles/shell/custom)*
+## *[CUSTOM dotfiles for the Shell](./dotfiles/shell/)*
+
+
+### *[custom/.brightness-controls](./dotfiles/shell/custom/.brightness-controls)*
+A low-level interface for precise display backlight manipulation without the need for heavy desktop environment plugins.
+
+- **Features:**
+    - **Raw Kernel Access:** Directly interacts with `/sys/class/backlight/` for near-instant response;
+    - **Percentage-based Logic:** Transmutes raw hardware values into a human-readable 0-100% scale;
+    - **Smart Inspection:** Aliases for quick monitoring of current, maximum, and percentage brightness levels.
+- **Logic:** It bypasses high-level display managers to provide a "pure" CLI method for brightness control, especially useful for minimalist window managers (WMs) or troubleshooting ACPI issues.
+
+#### Dependencies (Ingredients)
+To manipulate the screen's luminosity, the following tools are required:
+- [bc](https://www.gnu.org/software/bc/) - For high-precision mathematical calculations;
+- [coreutils](https://www.gnu.org/software/coreutils/) - Provides `cat` and `tee` for system file interaction;
+- [sed](https://www.gnu.org/software/sed/) - For stream editing and output formatting.
+
+#### Shell Integration
+To bridge your shell with the display hardware, add this line to your `.bashrc` or `.zshrc`:
+
+```bash
+[[ -f "$HOME/dotfiles/shell/custom/.brightness-controls" ]]  &&  source "$HOME/dotfiles/shell/custom/.brightness-controls"
+```
+
 
 
 ### *[custom/.privacy-hardware-controls](./dotfiles/shell/custom/.privacy-hardware-controls)*
@@ -141,5 +165,38 @@ A fortified *TUI* (*Terminal User Interface*) barrier for hardware isolation and
 Add the following line to your `.zshrc` or `.bashrc`:
 ```bash
 [[ -f "$HOME/dotfiles/shell/custom/.privacy-hardware-controls" ]]  &&  source "$HOME/dotfiles/shell/custom/.privacy-hardware-controls"
+```
+
+
+
+### *[fzf/.fzf-config](./dotfiles/shell/custom/fzf/.fzf-config)*
+An appendix for [fzf-music](./scripts/audio/fzf-music/) and 'fuzzy file' in general.
+- **Purpose:** It bridges your terminal with the script by providing a global alias and optimizing the UI/performance of `fzf` and `fd` system-wide.
+
+### *[fzf/.fzf-config](./dotfiles/shell/custom/fzf/.fzf-config)*
+The "Fuzzy Engine" core—a centralized configuration that transmutes standard terminal navigation into a high-speed, interactive experience.
+
+- **Features:**
+    - **Global UI Synthesis:** Implements a consistent "Reverse-Layout" with borders across all `fzf` instances, ensuring a clean and modern TUI aesthetic;
+    - **High-Velocity Discovery:** Replaces the standard `find` backend with `fd`, enabling instant file indexing that intelligently respects `.gitignore` rules and follows symbolic links;
+    - **Native Shell Infusion:** Injects advanced key-bindings directly into your shell session:
+        - `CTRL+T`: Rapidly find and select files;
+        - `CTRL+R`: Scry through your command history with fuzzy filtering;
+        - `ALT+C`: Swiftly teleport (change directory) into a selected folder;
+    - **Direct Gateway:** Provides the global `fzf-music` alias, bridging the gap between your shell and the audio workstation.
+- **Logic:** This dotfile acts as a "Universal Translator" for search operations. Instead of redundant configurations, it exports global variables (`FZF_DEFAULT_OPTS`, `FZF_DEFAULT_COMMAND`) that empower every script and command-line tool relying on fuzzy logic to operate with maximum efficiency and visual harmony.
+
+#### Dependencies (Ingredients)
+- [fzf](https://github.com/junegunn/fzf) - The interactive fuzzy finder;
+- [fd](https://github.com/sharkdp/fd) - A simple, fast, and user-friendly alternative to `find`;
+
+#### Required by:
+- [fzf-music.sh](./scripts/audio/fzf-music/fzf-music.sh) - A wrapper for *[fzf](https://github.com/junegunn/fzf)* and *[mpv](https://mpv.io/)*, for instant & lightweight music research and playing.
+
+#### Shell Integration
+To activate this search engine within your environment, add the following line to your $$$~/.zshrc$$$ or $$$~/.bashrc$$$:
+
+```bash
+[[ -f "$HOME/dotfiles/shell/custom/fzf/.fzf-config" ]] && source "$HOME/dotfiles/shell/custom/fzf/.fzf-config"
 ```
 
