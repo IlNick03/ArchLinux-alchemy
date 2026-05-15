@@ -1,0 +1,67 @@
+[global]
+    ### --- Display and Layout --- ###
+    origin = top-right
+    offset = (20, 20)
+    #width = (350, 480)    # standard width
+    width = (250, 320)    # more compact
+    height = (0, 150)
+
+    # -- Progress bar --
+    #  (a) For standard width
+    #progress_bar = true
+    #progress_bar_height = 8
+    #progress_bar_frame_width = 1
+    #  (b) For more compact notifications
+    progress_bar = true
+    progress_bar_height = 6
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 200
+    progress_bar_max_width = 280
+    
+    # This sets the filled part of the progress bar
+    highlight = "#cba6f7"
+    
+    separator_height = 4
+    padding = 15
+    horizontal_padding = 15
+    text_icon_padding = 15
+
+
+    ### --- Aesthetics --- ###
+    corner_radius = 20
+    frame_width = 2
+    
+    # Text scaling and font
+    font = JetBrainsMono Nerd Font 10
+    line_height = 3
+    markup = full
+    
+    # Title (%s) inherits the urgency color. 
+    # Body (%b) is a softer, blue-tinted white for better blending.
+    format = "<b>%s</b>\n<span foreground='#cdd6f4'>%b</span>"
+    
+    alignment = left
+    vertical_alignment = center
+    transparency = 20 
+
+    # Shared Deep Indigo background (from Waybar window)
+    background = "#0d0221"
+
+
+[urgency_low]
+    # Accent: Neon Blue (from your PulseAudio Waybar module #89b4fa)
+    foreground = "#89b4fa"
+    frame_color = "#89b4fa"
+    timeout = 5
+
+[urgency_normal]
+    # Accent: Deep Indigo/Violet Glow (from your Waybar border #8839ef)
+    foreground = "#8839ef"
+    frame_color = "#8839ef"
+    timeout = 10
+
+[urgency_critical]
+    # Accent: Pure Cyber Red (A more aggressive, pure red #ff0033)
+    foreground = "#ff0033"
+    frame_color = "#ff0033"
+    timeout = 0
