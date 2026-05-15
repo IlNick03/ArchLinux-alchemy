@@ -1,0 +1,269 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", 
+    "position": "top", 
+    "height": 45, 
+    "spacing": 6, 
+
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "privacy",                  // Monitors mic and cam usage
+        "idle_inhibitor",           // Toggles auto-suspend 
+        "mpris",                    // Which audio is playing now?
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "temperature",
+        "backlight",
+        "power-profiles-daemon",    // Energy profile management
+        "battery",
+        "network",                  // Connectivity group
+        "bluetooth",                // Connectivity group
+        "tray",                     // Tray applets (nm-applet, blueman)
+        "clock",
+        "custom/power"
+    ],
+
+
+
+    // --- HYPRLAND MODULES DEFINITION ---
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "separate-outputs": true
+    },
+
+    // Keyboard layout module
+    "hyprland/language": {
+        "format": "IT", 
+        "keyboard-name": "at-translated-set-2-keyboard",
+        "min-length": 5
+    },
+
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+
+
+    // --- HARDWARE MODULES --- //
+
+    // Brightness display  (use your FN keys to adjust)
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "bluetooth": {
+        "format-disabled": "BT Disabled 󰂲",
+        "format-off": "BT Off ",
+        "format-on": "BT Ready ",
+        "format-discoverable": "Scanning... ",
+
+
+		// Device Connected - Alternative Views
+
+		//  (a) Show device (details, clarity)
+		// "format-connected": "{device_alias} ",
+        // "format-connected-battery": "{device_alias} {device_battery_percentage}% ",
+
+        //  (b) Show default text (compact view, no details)
+        "format-connected": "BT ",
+        "format-connected-battery": "BT, {device_battery_percentage}% ",
+
+
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+
+        // LEFT CLICK: Toggle Bluetooth On/Off
+        "on-click": "rfkill toggle bluetooth",
+        // RIGHT CLICK: Open bluetooth manager
+        "on-click-right": "blueman-manager"
+    },
+
+    "clock": {
+        
+        // "format": "{:%H:%M}",    // 24h format  (e.g., 13:45)
+        "format": "{:%I:%M %p}",    // 12h format with AM/PM    (e.g., 01:45 PM)
+        
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+
+        //  Alternative Views (Toggle on click)
+        
+        // [EUROPEAN STYLE]
+        // "format-alt": "{:%d-%m-%Y}",                  // Day-Month-Year (15-05-2026)
+        "format-alt": "{:%d/%m/%Y}",                     // Day/Month/Year with slashes
+        // "format-alt": "{:%a, %d %b}",                 // Weekday, Day Month (Fri, 15 May)
+
+        // [US / INTERNATIONAL STYLE]
+        // "format-alt": "{:%Y-%m-%d}",                  // ISO-8601 Standard (2026-05-15)
+        // "format-alt": "{:%m/%d/%Y}",                  // Month/Day/Year (US style)
+        // "format-alt": "{:%B %d, %Y}",                 // Full Month Day, Year (May 15, 2026)
+
+        // [DETAILED / VERBOSE]
+        // "format-alt": "{:%A, %B %d, %Y (%R)}",        // Full Day, Month Day, Year + 24h Time
+        // "format-alt": "Week %V - %A",                 // Week number and Full Day name
+        
+        // [CYBERPUNK / MINIMALIST]
+        // "format-alt": "󰃭  {:%d·%m·%y}",               // Minimal with Icon and Dots
+        // "format-alt": "{:%H:%M:%S}",                  // Just show seconds for precision
+        // "format-alt": "{:%j/365}",                    // Day of the year (Julian date)
+        
+        // [TECHNICAL]
+        // "format-alt": "{:%s}",                        // Unix Timestamp (seconds since 1970)
+        // "format-alt": "UTC {:%H:%M} 󰓅",               // Could be useful for servers/devs
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "custom/power": {
+        "format" : "⏻ ",
+        "tooltip": false,
+        "on-click": "wlogout" 
+    },
+
+    // Activated   = always-on screen
+    // Deactivated = auto suspend
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        },
+        
+    "tooltip-format-activated": "Always-on screen",
+    "tooltip-format-deactivated": "Auto suspend"
+    },
+
+    // RAM Usage
+    "memory": {
+        "format": "{}% "
+    },
+
+    // Which audio is playing now?
+    //  For displaying 'mpv' playback, you need 'mpv-mpris'
+    "mpris": {
+        "format": "{player_icon} {status_icon}",
+        "format-paused": "{player_icon} {status_icon}",
+        "player-icons": {
+            "default": "󰎆",
+            "spotify": "",
+            "firefox": "",
+            "librewolf": "",
+            "chrome": "",
+            // "mpv": "󰿈"     
+        },
+        "status-icons": {
+            "paused": "󰏤"
+        },
+        
+	    "tooltip": true,
+	    "tooltip-format": "{player} - {status}\n{artist} - {album}",
+
+        /* Mouse Actions */
+	    "on-click": "playerctl play-pause",
+	    "on-click-right": "playerctl next",
+    },
+
+    "network": {
+        "format-disabled": "Network Off ⚠",
+        "format-disconnected": "Searching... ⚠",
+        "format-ethernet": "Ethernet ",
+
+		// Device Connected - Alternative Views
+        // "format-wifi": "{essid} ",            //  (a) Show device (details, clarity)
+        "format-wifi": "Wi-Fi ",    //  (b) Show default text (compact view, no details)
+        
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        // LEFT CLICK: Toggles Wi-Fi radio (Switch between On/Off)
+        "on-click": "nmcli radio wifi $(nmcli radio wifi | grep -q 'enabled' && echo 'off' || echo 'on')",
+        // RIGHT CLICK: Open manager in floating window
+        "on-click-right": "nm-connection-editor"
+    },
+
+    // Power profiles daemon configuration
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": " ",
+            "power-saver": " "
+        },
+        "min-length": 3
+    },
+
+    // Privacy module for mic and webcam indicators
+    "privacy": {
+        "icon-size": 14,
+        "nodes": [
+            { "type": "audio-in" },
+            { "type": "video-in" }
+        ]
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "Muted ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "default": ["", "", ""]
+        },
+        // LEFT CLICK: Toggle Mute/Unmute (restores previous volume)
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        // RIGHT CLICK: Open audio control panel
+        "on-click-right": "pavucontrol"
+    },
+
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+}
