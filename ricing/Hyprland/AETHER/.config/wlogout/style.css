@@ -1,0 +1,67 @@
+/* --- CYBERPUNK STYLE - MAXIMUM SPACING --- */
+
+window {
+    background-color: rgba(13, 2, 33, 0.75);    /* Deep indigo */
+}
+
+grid {
+    margin: 200px 300px; 
+}
+
+button {
+    background: linear-gradient(180deg, rgba(40, 40, 60, 0.6) 0%, rgba(20, 20, 35, 0.8) 100%);
+    color: #ffffff;
+    border: 2px solid #8839ef;
+    border-radius: 15px;
+    margin: 15px;
+    
+    /* ICON POSITIONING:
+       'center 15%' moves the icon even higher to the top edge.
+       '25%' size makes it slightly smaller to increase the gap. */
+    background-repeat: no-repeat;
+    background-position: center 15%; 
+    background-size: 25%; 
+    
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: rgba(136, 57, 239, 0.2);
+    border-color: #89dceb;
+    box-shadow: 0 0 15px rgba(137, 220, 235, 0.5);
+}
+
+/* TEXT LABEL:
+   'margin-top' set to 90px effectively forces the text to the 
+    very bottom of the button container. */
+label {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #cba6f7;
+    margin-top: 95px;   /* Extreme distance to prevent overlap */
+}
+
+/* --- ICON MAPPING --- */
+#lock { 
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout { 
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+}
+#suspend { 
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate { 
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown { 
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot { 
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+}
