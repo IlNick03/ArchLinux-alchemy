@@ -1,0 +1,122 @@
+-- modules/keybindings.lua
+
+-- Copyright (C) 2026, Nicolas Scalese
+---  Licensed under the GNU GPL v3 or later. Info:  https://www.gnu.org/licenses/gpl-3.0.html
+
+
+
+---- ###################
+---- ### KEYBINDINGS ###
+---- ###################
+------ See:  https://wiki.hypr.land/Configuring/Basics/Binds/
+------ See:  https://wiki.hypr.land/Configuring/Basics/Dispatchers/
+
+
+local mainMod = "SUPER"    -- Sets "Windows" key as main modifier
+
+
+-- === CORE BINDS ===
+
+---  Menus and launchers
+hl.bind(mainMod .. " + F1",               hl.dsp.exec_cmd(binds_table),                         { description = "Show keybindings table" })
+hl.bind(mainMod .. " + Space",            hl.dsp.exec_cmd(apps_launcher),                       { description = "Open application launcher" })
+
+--- The most useful apps
+hl.bind(mainMod .. " + Return",           hl.dsp.exec_cmd(terminal),                            { description = "Launch terminal emulator" })
+hl.bind(mainMod .. " + E",                hl.dsp.exec_cmd(file_Manager_GUI),                    { description = "Open GUI file manager" })
+hl.bind(mainMod .. " + ALT + E",          hl.dsp.exec_cmd(file_Manager_TUI),                    { description = "Open TUI file manager" })
+hl.bind(mainMod .. " + B",                hl.dsp.exec_cmd(browser),                             { description = "Open web browser" })
+hl.bind("CTRL + SHIFT + Escape",          hl.dsp.exec_cmd(process_Monitor),                     { description = "Open system process monitor" })
+
+
+
+-- === WINDOWS, LAYOUT, NAVIGATION, REPOSITIONING ===
+
+---  Windows Management
+hl.bind(mainMod .. " + V",                hl.dsp.window.float({ action = "toggle" }),           { description = "Toggle floating mode" })
+hl.bind(mainMod .. " + C",                hl.dsp.window.center(),                               { description = "Center focused window" })
+hl.bind(mainMod .. " + M",                hl.dsp.window.fullscreen({ mode = 1 }),               { description = "Maximize window (keep gaps)" })
+hl.bind(mainMod .. " + F",                hl.dsp.window.fullscreen({ mode = 0 }),               { description = "Toggle true fullscreen" })
+hl.bind(mainMod .. " + P",                hl.dsp.window.pin(),                                  { description = "Pin window (sticky)" })
+
+---  Kill the focused window
+local closeWindowBind = hl.bind(
+        mainMod .. " + K",                hl.dsp.window.close(),                                { description = "Kill focused window" }
+)
+
+---  Layout controls
+hl.bind(mainMod .. " + J",                hl.dsp.layout("togglesplit"),                         { description = "Toggle horizontal/vertical split" })
+hl.bind(mainMod .. " + L",                hl.dsp.window.pseudo(),                               { description = "Toggle pseudo-tiling" })
+
+---  Navigation & Focus  (Arrow keys)
+hl.bind(mainMod .. " + left",             hl.dsp.focus({ direction = "l" }),                    { description = "Focus window left" })
+hl.bind(mainMod .. " + right",            hl.dsp.focus({ direction = "r" }),                    { description = "Move window right" })
+hl.bind(mainMod .. " + up",               hl.dsp.focus({ direction = "u" }),                    { description = "Focus window up" })
+hl.bind(mainMod .. " + down",             hl.dsp.focus({ direction = "d" }),                    { description = "Focus window down" })
+
+---  Window Repositioning  (Shift + arrows)
+hl.bind(mainMod .. " + SHIFT + left",     hl.dsp.window.move({ direction = "l" }),              { description = "Move window left" })
+hl.bind(mainMod .. " + SHIFT + right",    hl.dsp.window.move({ direction = "r" }),              { description = "Move window right" })
+hl.bind(mainMod .. " + SHIFT + up",       hl.dsp.window.move({ direction = "u" }),              { description = "Move window up" })
+hl.bind(mainMod .. " + SHIFT + down",     hl.dsp.window.move({ direction = "d" }),              { description = "Move window down" })
+
+---  Resize windows  (Alt + arrows) (Repeatable)
+hl.bind(mainMod .. " + ALT + left",       hl.dsp.window.resize({ x = -30, y =   0, relative = true }),  { repeating = true,  description = "Shrink window width" })
+hl.bind(mainMod .. " + ALT + right",      hl.dsp.window.resize({ x =  30, y =   0, relative = true }),  { repeating = true,  description = "Expand window width" })
+hl.bind(mainMod .. " + ALT + up",         hl.dsp.window.resize({ x =   0, y = -30, relative = true }),  { repeating = true,  description = "Shrink window height" })
+hl.bind(mainMod .. " + ALT + down",       hl.dsp.window.resize({ x =   0, y =  30, relative = true }),  { repeating = true,  description = "Expand window height" })
+
+
+
+-- === WORKSPACES ===
+
+---  Switch workspaces with mainMod + [0-9]
+---  Move active window to a workspace with:  mainMod + SHIFT + [0-9]
+for i = 1, 10 do
+    local key = i % 10    -- 10 maps to key 0
+    hl.bind(mainMod .. " + " .. key,          hl.dsp.focus({ workspace = i}),                   { description = "Switch to workspace " .. i })
+    hl.bind(mainMod .. " + SHIFT + " .. key,  hl.dsp.window.move({ workspace = i }),            { description = "Move window to workspace " .. i })
+end
+
+---  "Magic" workspace (scratchpad)
+hl.bind(mainMod .. " + S",                hl.dsp.workspace.toggle_special("magic"),             { description = "Toggle magic scratchpad" })
+hl.bind(mainMod .. " + SHIFT + S",        hl.dsp.window.move({ workspace = "special:magic" }),  { description = "Move window to scratchpad" })
+hl.bind(mainMod .. " + SHIFT + D",        hl.dsp.window.move({ workspace = "+0"}),              { description = "Detach from workspace (move 0)" })
+
+
+
+-- === HARDWARE/MULTIMEDIA CONTROLS (backlight, volume) ===
+
+---  Laptop brightness controls keys
+hl.bind("XF86MonBrightnessUp",            hl.dsp.exec_cmd("brightnessctl set 5%+"),                         { locked = true, repeating = true,  description = "Increase backlight" })
+hl.bind("XF86MonBrightnessDown",          hl.dsp.exec_cmd("brightnessctl set 5%-"),                         { locked = true, repeating = true,  description = "Decrease backlight" })
+
+---  Laptop volume controls keys
+hl.bind("XF86AudioRaiseVolume",           hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"),     { locked = true, repeating = true,  description = "Increase volume" })
+hl.bind("XF86AudioLowerVolume",           hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),     { locked = true, repeating = true,  description = "Decrease volume" })
+hl.bind("XF86AudioMute",                  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),    { locked = true, repeating = true,  description = "Toggle mute for playback" })
+hl.bind("XF86AudioMicMute",               hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),  { locked = true, repeating = true,  description = "Toggle mute for microphone" })
+
+---  Music playback control with 'playerctl' (next, pause, play, prev)
+hl.bind("XF86AudioNext",                  hl.dsp.exec_cmd("playerctl next"),                                { locked = true,                    description = "Next track" })
+hl.bind("XF86AudioPause",                 hl.dsp.exec_cmd("playerctl play-pause"),                          { locked = true,                    description = "Pause playback" })
+hl.bind("XF86AudioPlay",                  hl.dsp.exec_cmd("playerctl play-pause"),                          { locked = true,                    description = "Play playback" })
+hl.bind("XF86AudioPrev",                  hl.dsp.exec_cmd("playerctl previous"),                            { locked = true,                    description = "Previous track" })
+
+
+
+-- === MY CUSTOM BINDS ===
+
+---  Futuristic Audio Session (custom 'terminal music player' setup)
+----   Only for TRVE music enthusiasts!
+hl.bind(mainMod .. " + SHIFT + A",        hl.dsp.exec_cmd(scripts_dir .. "/launch-audio-session.sh"),      { description = "Launch the 'futuristic audio session'" })
+hl.bind(mainMod .. " + SHIFT + ALT + A",  hl.dsp.exec_cmd(scripts_dir .. "/kill-audio-session.sh"),        { description = "Terminate the 'futuristic audio session'" })
+
+---  Wallpaper Changing
+hl.bind(mainMod .. " + ALT + W",          hl.dsp.exec_cmd(random_WP),                                      { description = "Set a random image as new wallpaper" })
+
+---  Screen Capturing
+hl.bind("Print", hl.dsp.exec_cmd(screen_shot),                                                  { description = "Capture screenshot" })
+hl.bind(mainMod .. " + F8",               hl.dsp.exec_cmd(screen_rec_start),                    { description = "Start screen recording" })
+hl.bind(mainMod .. " + F9",               hl.dsp.exec_cmd(screen_rec_pause),                    { description = "Pause screen recording" })
+hl.bind(mainMod .. " + F10",              hl.dsp.exec_cmd(screen_rec_stop),                     { description = "Stop screen recording" })
