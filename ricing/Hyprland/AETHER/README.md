@@ -62,7 +62,7 @@ to ensure your underlying graphics layers (`Wayland`, `wlroots`, `Mesa`, and opt
 
 ### Essential Components
 
-Without these core pillars, the A.E.T.H.E.R. environment cannot initialize or maintain architectural integrity.
+Without these core pillars, the *A.E.T.H.E.R.* environment cannot initialize or maintain architectural integrity.
 
 | Program | Ecosystem Role |
 | :--- | :--- |
@@ -75,7 +75,6 @@ Without these core pillars, the A.E.T.H.E.R. environment cannot initialize or ma
 | [Waybar](https://github.com/Alexays/Waybar) | The primary CSS-styled telemetry bar, hosting custom script extensions and the interactive eye-pill inhibitor. |
 | [wlogout](https://github.com/ArtsyMacaw/wlogout) | A full-screen, minimal overlay menu executing clean power cycles, logouts, and sleep sequences. |
 | [Wofi](https://hg.sr.ht/~scoopta/wofi) | A menu-driven application runner styled via custom stylesheets (`style.css`) to match the colorway. |
-| [Zsh](https://www.zsh.org/) + [Tmux](https://github.com/tmux/tmux) | The combined shell ecosystem delivering automatic terminal nesting, workspace multiplexing, and session persistence. |
 
 
 ### Optional Components (The Extended Experience Stack)
@@ -96,18 +95,20 @@ These utilities enrich the ecosystem, providing advanced multimedia, file explor
 | [Thunar](https://docs.xfce.org/xfce/thunar/start) | A lightweight, responsive GTK-3 graphical file manager configured to blend into the universal dark theme. |
 | [Wireplumber](https://pipewire.pages.freedesktop.org/wireplumber/) (`wpctl`) | Audio engine controller driving PipeWire routing settings, hardware mute states, and volume levels. |
 | [Yazi](https://github.com/sxyazi/yazi) | An asynchronous terminal file manager used for rapid, terminal-bound asset and workspace navigation. |
+| [Zsh](https://www.zsh.org/) + [Tmux](https://github.com/tmux/tmux) | The combined shell ecosystem delivering automatic terminal nesting, workspace multiplexing, and session persistence. |
 
 
 ### Custom Scripts & Alchemical Automations
 
-The trve spirit of *A.E.T.H.E.R.* thrives within its custom executable layer. Rather than relying on rigid, monolithic tools, the system coordinates actions through lightweight Shell scripts tethered straight to the Lua core engine.
+The TRVE spirit of *A.E.T.H.E.R.* thrives within its custom executable layer. Rather than relying on rigid, monolithic tools, the system coordinates actions through lightweight Shell scripts tethered straight to the Lua core engine.
 
 | Program | Ecosystem Role |
 | :--- | :--- |
-| [hypr-binds-map.sh](https://github.com/ilNick-03/ArchLinux-alchemy) | **Dynamic Keybindings Visualizer:** Intercepts live system mappings via `SUPER + F1` and instantly renders an interactive data table nested inside a distinct window class wrapper (`floating_bindsmap`). |
-| [futuristic-audio-session.sh](https://github.com/ilNick-03/ArchLinux-alchemy) / [kill-audio-session.sh](https://github.com/ilNick-03/ArchLinux-alchemy) | **The Futuristic Audio Session:** A dedicated environment engineered for *TRVE music enthusiasts*. It orchestrates an isolated terminal workspace optimized for high-fidelity audio consumption and seamless binary toggle controls. |
-| [random-wallpaper-hypr.sh](https://github.com/ilNick-03/ArchLinux-alchemy) | **Alchemical Wallpaper Rotation:** Driven by `SUPER + ALT + W`, this script injects life into the canvas by selecting a random graphical asset. It natively leverages `hyprpaper` as the default engine for pristine, hardware-accelerated image scaling. |
-| [random-wallpaper-swaybg.sh](https://github.com/ilNick-03/ArchLinux-alchemy) | **Wallpaper Engine Fallback:** A dedicated alternative script layout that allows users to swap the background rendering infrastructure to `swaybg` on the fly, maintaining modularity across Wayland environments. |
+| [futuristic-audio-session.sh](../../../dotfiles/shell/custom/.futuristic-audio-session), alongside: `launch-audio-session.sh`, `kill-audio-session.sh` | **The Futuristic Audio Session:** A dedicated environment engineered for *TRVE music enthusiasts*. It orchestrates an isolated terminal workspace optimized for high-fidelity audio consumption and seamless binary toggle controls. |
+| [hypr-binds-map.sh](./.config/hypr/scripts/hypr-binds-map.sh) | **Dynamic Keybindings Visualizer:** Intercepts live system mappings via `SUPER + F1` and instantly renders an interactive data table nested inside a distinct window class wrapper (`floating_bindsmap`). |
+| [init-wallpaper.sh](./.config/hypr/scripts/init-wallpaper.sh) | **Static Canvas Initialization:** Executed automatically during the ecosystem's boot phase. It pre-loads and locks the foundational splash imagery using `hyprpaper`, ensuring a seamless, flicker-free visual transition before the dynamic wallpaper engine takes over. |
+| [random-wallpaper-hypr.sh](../../../scripts/desktop-enhancements/random-wallpaper/random-wallpaper-hypr.sh) | **Alchemical Wallpaper Rotation:** Driven by `SUPER + ALT + W`, this script injects life into the canvas by selecting a random graphical asset. It natively leverages `hyprpaper` as the default engine for pristine, hardware-accelerated image scaling. |
+| [random-wallpaper-swaybg.sh](../../../scripts/desktop-enhancements/random-wallpaper/random-wallpaper-swaybg.sh) | **Wallpaper Engine Fallback:** A dedicated alternative script layout that allows users to swap the background rendering infrastructure to `swaybg` on the fly, maintaining modularity across Wayland environments. |
 
 
 ---
