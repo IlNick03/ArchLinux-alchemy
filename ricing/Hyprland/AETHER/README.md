@@ -1,4 +1,4 @@
-# A.E.T.H.E.R. Project - Aesthetic Environment using Trve Hyprland Elemental Reactivity
+# A.E.T.H.E.R. project - Aesthetic Environment using Trve Hyprland Elemental Reactivity
 
 
 > **"Firmitas, Utilitas, Venustas."** *(Strength, Utility, Beauty)*
@@ -152,7 +152,7 @@ to conform to your specific system layout.
 
 Before booting the environment, you must manually acquire the default ecosystem wallpaper. 
 - Open and follow the retrieval instructions detailed inside this [text file](./.config/hypr/splash.txt).
-- Once downloaded, convert/rename it as `spash.jpg` and move it to `./.config/hypr/` folder. Otherwise, if you choose to store the asset in the non-standard directory
+- Once downloaded, convert/rename it as `splash.jpg` and move it to `./.config/hypr/` folder. Otherwise, if you choose to store the asset in the non-standard directory
   and/or using the non-standard file name, ensure you update its absolute target path inside `./.config/hypr/modules/vars.lua` by re-targeting the initialization variable:
 
 ```lua
@@ -187,7 +187,6 @@ comment out the Intel profile block, and un-comment the advanced Nvidia theming 
 hl.env("LIBVA_DRIVER_NAME",         "nvidia")
 hl.env("GBM_BACKEND",               "nvidia-drm")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
-
 ```
 
 
@@ -197,7 +196,7 @@ To prevent mixed fonts and inconsistent white window frames from breaking the Sy
 confirm that `qt6ct` is running. The variable system forces Qt-based applications to read from this layer 
 via the `QT_QPA_PLATFORMTHEME` environment variable, ensuring absolute style consistency across every app 
 window on your screen.
-Plus, copy the content of [this file](https://github.com/ilNick-03/ArchLinux-alchemy/blob/main/ricing/Hyprland/AETHER/.config/gtk-3.0/add-to-gtk.css)
+Additionally, copy the content of [this file](https://github.com/ilNick-03/ArchLinux-alchemy/blob/main/ricing/Hyprland/AETHER/.config/gtk-3.0/add-to-gtk.css)
 and add these code lines inside your "$HOME/.config/gtk-3.0/gtk.css" to uniform the theme of apps using old GTK libraries (such as dunst).
 
 
