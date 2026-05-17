@@ -10,12 +10,13 @@
 ---- #############
 ------ See:  https://wiki.hypr.land/Configuring/Basics/Variables/#input
 
+
 hl.config({
     input = {
-        --- Keyboard layour configuration
-        kb_layout           =  "it",    -- default: "us"
+        --- Keyboard layour configuration (You need to edit these!)
+        kb_layout           =  "us",      -- Otherwise: "it", "fr", "de", ...
         kb_variant          =  "",
-        kb_model            =  "pc105",   -- default: "" (empty)
+        kb_model            =  "",        -- Otherwise: "pc105", ...
         kb_options          =  "",
         kb_rules            =  "",
 
