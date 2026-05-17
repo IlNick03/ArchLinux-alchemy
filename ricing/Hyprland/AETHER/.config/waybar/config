@@ -1,15 +1,19 @@
+// -*- mode: jsonc -*-
+
 // Copyright (C) 2026, Nicolas Scalese
 // Licensed under the GNU GPL v3 or later. Info:  https://www.gnu.org/licenses/gpl-3.0.html
 
 
-// -*- mode: jsonc -*-
 {
     "layer": "top", 
     "position": "top", 
     "height": 45, 
     "spacing": 6, 
 
-    // Choose the order of the modules
+
+
+    // --- OVERALL STATUS-BAR STRUCTURE & MODULES ORDER --- //
+    
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/submap"
@@ -22,9 +26,15 @@
         "idle_inhibitor",           // Toggles auto-suspend 
         "mpris",                    // Which audio is playing now?
         "pulseaudio",
+
+        // HARDWARE MONITORING STRATEGY & BATTERY OPTIMIZATION:
+        // - Real-time (interval <= 1s) :         Highly informative but disrupts CPU C-States (battery drain).
+        // - Balanced Polling (interval 3s-10s) : Optimal trade-off between live metrics and energy efficiency.
+        // - Stealth Mode (commented out) :       Zero overhead, prevents unnecessary CPU wakeups entirely.
         "cpu",
         "memory",
         "temperature",
+        
         "backlight",
         "power-profiles-daemon",    // Energy profile management
         "battery",
@@ -37,7 +47,7 @@
 
 
 
-    // --- HYPRLAND MODULES DEFINITION ---
+    // --- HYPRLAND MODULES DEFINITION --- //
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -65,7 +75,7 @@
 
 
 
-    // --- HARDWARE MODULES --- //
+    // --- HARDWARE MODULES DEFINITION --- //
 
     // Brightness display  (use your FN keys to adjust)
     "backlight": {
@@ -150,7 +160,8 @@
 
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": false,
+        "interval": 10,          // Increased interval to mitigate polling overhead
     },
 
     "custom/power": {
@@ -174,7 +185,8 @@
 
     // RAM Usage
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "interval": 30,          // Increased interval to mitigate polling overhead
     },
 
     // Which audio is playing now?
@@ -199,7 +211,7 @@
 
         /* Mouse Actions */
 	    "on-click": "playerctl play-pause",
-	    "on-click-right": "playerctl next",
+	    "on-click-right": "playerctl next"
     },
 
     "network": {
@@ -208,8 +220,8 @@
         "format-ethernet": "Ethernet ",
 
 		// Device Connected - Alternative Views
-        // "format-wifi": "{essid} ",            //  (a) Show device (details, clarity)
-        "format-wifi": "Wi-Fi ",    //  (b) Show default text (compact view, no details)
+        // "format-wifi": "{essid} ",               //  (a) Show device (details, clarity)
+        "format-wifi": "Wi-Fi ",                 //  (b) Show default text (compact view, no details)
         
         "tooltip-format": "{ifname} via {gwaddr} ",
         // LEFT CLICK: Toggles Wi-Fi radio (Switch between On/Off)
@@ -263,7 +275,8 @@
         "critical-threshold": 80,
         "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "interval": 20                        // Increased interval to mitigate polling overhead
     },
 
     "tray": {
