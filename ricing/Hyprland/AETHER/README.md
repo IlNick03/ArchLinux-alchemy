@@ -71,6 +71,7 @@ Without these core pillars, the *A.E.T.H.E.R.* environment cannot initialize or 
 | [hypridle](https://github.com/hyprwm/hypridle) | The centralized idle management daemon, listening directly to Waybar’s inhibition protocol hooks. |
 | [Hyprland](https://hyprland.org/) | The core dynamic tiling Wayland compositor and hardware-accelerated window layout engine. |
 | [hyprpaper](https://github.com/hyprwm/hyprpaper) / [swaybg](https://github.com/swaywm/swaybg) | **Wallpaper Backends:** The core rendering layers for background imagery. The configuration defaults to `hyprpaper` for superior native resizing quality, while leaving `swaybg` fully configured as an on-the-fly Wayland alternative. |
+| [polkit-gnome](https://archlinux.org/packages/extra/x86_64/polkit-gnome/) | The GTK3-based graphical authentication agent running in the background to handle elevated system privilege requests. |
 | [qt6ct](https://github.com/trialuser02/qt6ct) | The central configuration controller forcing cross-toolkit UI elements to render via uniform theme rules. |
 | [Waybar](https://github.com/Alexays/Waybar) | The primary CSS-styled telemetry bar, hosting custom script extensions and the interactive eye-pill inhibitor. |
 | [wlogout](https://github.com/ArtsyMacaw/wlogout) | A full-screen, minimal overlay menu executing clean power cycles, logouts, and sleep sequences. |
@@ -91,7 +92,6 @@ These utilities enrich the ecosystem, providing advanced multimedia, file explor
 | [nm-applet](https://gitlab.gnome.org/GNOME/network-manager-applet) / [blueman](https://github.com/blueman-project/blueman) | Core tray indicators (`--indicator` hooks) providing unified network management and Bluetooth connectivity straight from the status bar. |
 | [obs-cmd](https://github.com/norihiro/obs-cmd) | A command-line client mapping video capturing keybindings straight to a background OBS Studio recording socket. |
 | [Playerctl](https://github.com/alols/playerctl) | A unified command-line media interface mapping global track tracking (Play/Pause/Next/Prev) controls. |
-| [polkit-kde-agent](https://archlinux.org/packages/extra/x86_64/polkit-kde-agent/) | The localized graphical authentication agent (`polkit-kde-authentication-agent-1`) running in the background to handle elevated system permissions requests. |
 | [Thunar](https://docs.xfce.org/xfce/thunar/start) | A lightweight, responsive GTK-3 graphical file manager configured to blend into the universal dark theme. |
 | [Wireplumber](https://pipewire.pages.freedesktop.org/wireplumber/) (`wpctl`) | Audio engine controller driving PipeWire routing settings, hardware mute states, and volume levels. |
 | [Yazi](https://github.com/sxyazi/yazi) | An asynchronous terminal file manager used for rapid, terminal-bound asset and workspace navigation. |
