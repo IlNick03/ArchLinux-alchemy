@@ -69,7 +69,7 @@ _G.idle_daemon          =  "hypridle"
 -- _G.binds_table          =  "hyprkcs"    -- It does not yet support new Hyprland's Lua configuration.
 _G.binds_table          =  "alacritty -T \"Keybindings Table [$(date +\'%Y%m%d-%H%M%S\')]\" --class floating_bindsmap -e " .. home_dir .. "/.config/hypr/scripts/hypr-binds-map.sh"
 _G.apps_launcher        =  "wofi --show drun --conf \"" .. home_dir .. "/.config/wofi/config\" --style \"" .. home_dir .. "/.config/wofi/style.css\""
-_G.auth_manager         =  "/usr/bin/polkit-kde-authentication-agent-1"
+_G.auth_manager         =  "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 ---  Terminal User Iterface (TUI) programds
 _G.terminal             =  "alacritty -T \"Alacritty [$(date +\'%Y%m%d-%H%M%S\')]\" -e zsh --login -c \"tmux\""
