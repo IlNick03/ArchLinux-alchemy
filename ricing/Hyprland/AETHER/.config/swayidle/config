@@ -1,0 +1,13 @@
+# Copyright (C) 2026, Nicolas Scalese
+# Licensed under the GNU GPL v3 or later. Info:  https://www.gnu.org/licenses/gpl-3.0.html
+
+
+# General commands
+before-sleep 'loginctl lock-session'
+after-resume 'brightnessctl --restore'
+
+# Step 1: Dim the screen after '4 min 50 sec'
+timeout 290 'brightnessctl --save && brightnessctl set 5%' resume 'brightnessctl --restore'
+
+# Step 2: Put the computer to sleep after '5 min 20 sec'
+timeout 320 'systemctl suspend'
