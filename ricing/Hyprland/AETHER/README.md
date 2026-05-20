@@ -68,9 +68,9 @@ Without these core pillars, the *A.E.T.H.E.R.* environment cannot initialize or 
 | :--- | :--- |
 | [Alacritty](https://alacritty.org/) | The GPU-accelerated terminal emulator acting as the default interface wrapper for all CLI interactions. |
 | [Dunst](https://dunst-project.org/) | A low-overhead notification daemon configured for clean, geometric pop-up alerts. |
-| [hypridle](https://github.com/hyprwm/hypridle) / [swayidle](https://github.com/swaywm/swayidle) | **Idle Management Daemons:** The core sub-systems driving automated display dimming and suspend activation. This project prefers `swayidle` as a rock-solid, C-based alternative; while maintaining full compatibility with `hypridle`. |
+| [hypridle](https://github.com/hyprwm/hypridle) / [swayidle](https://github.com/swaywm/swayidle) | **Idle Management Daemons**: The core sub-systems driving automated display dimming and suspend activation. This project prefers `swayidle` as a rock-solid, C-based alternative; while maintaining full compatibility with `hypridle`. |
 | [Hyprland](https://hyprland.org/) | The core dynamic tiling Wayland compositor and hardware-accelerated window layout engine. |
-| [hyprpaper](https://github.com/hyprwm/hyprpaper) / [swaybg](https://github.com/swaywm/swaybg) | **Wallpaper Backends:** The core rendering layers for background imagery. The configuration defaults to `hyprpaper` for superior native resizing quality, while leaving `swaybg` fully configured as an on-the-fly Wayland alternative. |
+| [hyprpaper](https://github.com/hyprwm/hyprpaper) / [swaybg](https://github.com/swaywm/swaybg) | **Wallpaper Backends**: The core rendering layers for background imagery. The configuration defaults to `hyprpaper` for superior native resizing quality, while leaving `swaybg` fully configured as an on-the-fly Wayland alternative. |
 | [polkit-gnome](https://archlinux.org/packages/extra/x86_64/polkit-gnome/) | The GTK3-based graphical authentication agent running in the background to handle elevated system privilege requests. |
 | [qt6ct](https://github.com/trialuser02/qt6ct) | The central configuration controller forcing cross-toolkit UI elements to render via uniform theme rules. |
 | [Waybar](https://github.com/Alexays/Waybar) | The primary CSS-styled telemetry bar, hosting custom script extensions and the interactive eye-pill inhibitor. |
@@ -86,6 +86,7 @@ These utilities enrich the ecosystem, providing advanced multimedia, file explor
 | :--- | :--- |
 | [Brightnessctl](https://github.com/Adisbladis/brightnessctl) | Screen backlight brightness adjustments tied directly to laptop hardware keys. |
 | [btop](https://github.com/aristocratos/btop) | An interactive system monitor executing inside an isolated, floating window class wrapper (`floating_monitor`). |
+| [cliphist](https://github.com/sentriz/cliphist) + [wl-clipboard](https://github.com/bugaevc/wl-clipboard) | **Clipboard Management Subsystem**: The combined stack driving Wayland-native copy/paste synchronization (`wl-clipboard`) alongside a local, text-bound historical data registry (`cliphist`). |
 | [Grim](https://sr.ht/~emersion/grim/) + [Slurp](https://github.com/emersion/slurp) | Regional and full-display screen captioning utilities paired together for accurate crop selections. |
 | [ImageMagick](https://imagemagick.org/) | Post-processing image engine (`magick` pipes) forcing raw window captures into highly compressed, 80-depth sRGB JPEGs. |
 | [Librewolf](https://librewolf.net/) | A privacy-hardened browser customized to carry out clean web navigation without telemetry bloat. |
@@ -104,9 +105,9 @@ The TRVE spirit of *A.E.T.H.E.R.* thrives within its custom executable layer. Ra
 
 | Program | Ecosystem Role |
 | :--- | :--- |
-| [futuristic-audio-session.sh](../../../dotfiles/shell/custom/.futuristic-audio-session) | **The Futuristic Audio Session:** A dedicated environment engineered for *TRVE music enthusiasts*. It orchestrates an isolated terminal workspace optimized for high-fidelity audio consumption and seamless binary toggle controls. |
-| [hypr-binds-map.sh](./.config/hypr/scripts/hypr-binds-map.sh) | **Dynamic Keybindings Visualizer:** Intercepts live system mappings via `SUPER + F1` and instantly renders an interactive data table nested inside a distinct window class wrapper (`floating_bindsmap`). |
-| [init-wallpaper.sh](./.config/hypr/scripts/init-wallpaper.sh) | **Static Canvas Initialization:** Executed automatically during the ecosystem's boot phase. It pre-loads and locks the foundational splash imagery using `hyprpaper`, ensuring a seamless, flicker-free visual transition before the dynamic wallpaper engine takes over. |
+| [futuristic-audio-session.sh](../../../dotfiles/shell/custom/.futuristic-audio-session) | **The Futuristic Audio Session**: A dedicated environment engineered for *TRVE music enthusiasts*. It orchestrates an isolated terminal workspace optimized for high-fidelity audio consumption and seamless binary toggle controls. |
+| [hypr-binds-map.sh](./.config/hypr/scripts/hypr-binds-map.sh) | **Dynamic Keybindings Visualizer**: Intercepts live system mappings via `SUPER + F1` and instantly renders an interactive data table nested inside a distinct window class wrapper (`floating_bindsmap`). |
+| [init-wallpaper.sh](./.config/hypr/scripts/init-wallpaper.sh) | **Static Canvas Initialization**: Executed automatically during the ecosystem's boot phase. It pre-loads and locks the foundational splash imagery using `hyprpaper`, ensuring a seamless, flicker-free visual transition before the dynamic wallpaper engine takes over. |
 | [random-wallpaper-hypr.sh](../../../scripts/desktop-enhancements/random-wallpaper/random-wallpaper-hypr.sh) / [random-wallpaper-swaybg.sh](../../../scripts/desktop-enhancements/random-wallpaper/random-wallpaper-swaybg.sh) | **Change Wallpaper Randomly:** Driven by `SUPER + ALT + W`, these scripts inject life into the canvas by selecting a random graphical asset. The framework routes requests through `hyprpaper` by default for high-quality, hardware-accelerated image scaling; while maintaining an identical, fully operational `swaybg` fallback layout to preserve absolute desktop modularity. |
 
 
