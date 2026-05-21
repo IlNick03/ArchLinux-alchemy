@@ -204,7 +204,7 @@ cp -r .config/wofi "$HOME/.config/"
 
 - Step 4: Uniform older toolkit styling using the *A.E.T.H.E.R.* definition
 ```bash
-cp .config/gtk-3.0/aether-win-menu.css "$HOME/.config/gtk-3.0/gtk.css"
+cp .config/gtk-3.0/aether-win-menu.css "$HOME/.config/gtk-3.0/aether-win-menu.css"
 ```
 
 #### Vector Beta: Symlink Grafting (Recommended for Developers)
@@ -218,7 +218,6 @@ mkdir -p "$HOME/.config/gtk-3.0"
 - Step 2: Clean legacy nodes to prevent multi-nesting link corruption
 ```bash
 rm -rf "$HOME/.config/dunst" "$HOME/.config/hypr" "$HOME/.config/swayidle" "$HOME/.config/waybar" "$HOME/.config/wlogout" "$HOME/.config/wofi"
-rm -f "$HOME/.config/gtk-3.0/gtk.css"
 ```
 
 - Step 3: Inject live symbolic links targeting the A.E.T.H.E.R. blueprint
@@ -294,8 +293,11 @@ To prevent mixed fonts and inconsistent white window frames from breaking the Sy
 confirm that `qt6ct` is running. The variable system forces Qt-based applications to read from this layer 
 via the `QT_QPA_PLATFORMTHEME` environment variable, ensuring absolute style consistency across every app 
 window on your screen.
-Additionally, copy the content of [this file](https://github.com/ilNick-03/ArchLinux-alchemy/blob/main/ricing/Hyprland/AETHER/.config/gtk-3.0/add-to-gtk.css)
-and add these code lines inside your "$HOME/.config/gtk-3.0/gtk.css" to uniform the theme of apps using old GTK libraries (such as dunst).
+Additionally, add these code lines inside your "$HOME/.config/gtk-3.0/gtk.css" to uniform the theme of apps using old GTK libraries (such as dunst):
+
+```css
+@import `aether-win-menu.css`
+```
 
 
 ---
