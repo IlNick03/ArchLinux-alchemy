@@ -57,7 +57,7 @@ Other beautiful ricing screenshots are provided in the ["*screenshots*"](./scree
 To build a system that achieves maximum stability (*Firmitas*) and utility (*Utilitas*), the dependencies are strictly categorized.
 
 Before deploying *A.E.T.H.E.R.*, please review the [official Hyprland getting-started guide](https://wiki.hypr.land/Getting-Started/Installation/) 
-to ensure your underlying graphics layers (`Wayland`, `wlroots`, `Mesa`, and optional `XWayland` wrappers) are fully provisioned.
+to acknowledge which fundamental dependencies you need for running "basic" *Hyprland*.
 
 
 ### Essential Components
