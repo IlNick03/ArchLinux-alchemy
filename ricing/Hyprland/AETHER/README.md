@@ -147,6 +147,99 @@ Plus. once you have installed this "ricing", you can view keybindings in table f
 ---
 
 
+## 💾 Installation & Deployment
+
+Before modifying your desktop infrastructure, remember the core Roman architectural maxim: *ensure the foundation is secure before erecting the framework*. Deploying *A.E.T.H.E.R.* involves overwriting or linking configuration nodes. 
+
+
+### 0. The Defensive Sentinel: Mandatory Backup Strategy
+> [!TIP]
+> Do not proceed without archiving your current user-space environments. Run the following command inside your terminal to generate an atomic, timestamped snapshot of your entire `.config` directory:
+
+```bash
+# Generate a compressed tarball backup with exact calendar tracking
+tar -czf "$HOME/config-backup-$(date +%Y%m%d-%H%M%S).tar.gz" -C "$HOME" .config
+```
+
+> [!TIP]
+> *If anything breaks during deployment, you can restore your pristine state instantly via*: 
+    `tar -xzf ~/config-backup-*.tar.gz -C ~`
+
+
+### 1. Cloning the Alchemical Repository
+Acquire the source blueprint from the official distribution socket using `git`. This fetches the full alchemy stack repository:
+
+```bash
+git clone https://github.com/ilNick-03/ArchLinux-alchemy.git
+cd ArchLinux-alchemy/ricing/Hyprland/AETHER
+```
+
+
+### 2. Choosing Your Deployment Vector
+
+Depending on your dotfile management philosophy, choose **Vector Alpha** (Physical Isolation) or **Vector Beta** (Symlink Grafting).
+
+#### Vector Alpha: Physical Decoupled Copying
+Choose this if you want a standalone, immutable setup that completely cuts ties with the cloned repository folder.
+
+- Step 1: Pre-initialize user space structures
+```bash
+mkdir -p "$HOME/.config/gtk-3.0"
+```
+
+- Step 2: Clear pre-existing conflicting directories
+```bash
+rm -rf "$HOME/.config/dunst" "$HOME/.config/hypr" "$HOME/.config/swayidle" "$HOME/.config/waybar" "$HOME/.config/wlogout" "$HOME/.config/wofi"
+```
+
+- Step 3: Physically deploy the configuration structures
+```bash
+cp -r .config/dunst "$HOME/.config/"
+cp -r .config/hypr "$HOME/.config/"
+cp -r .config/swayidle "$HOME/.config/"
+cp -r .config/waybar "$HOME/.config/"
+cp -r .config/wlogout "$HOME/.config/"
+cp -r .config/wofi "$HOME/.config/"
+```
+
+- Step 4: Uniform older toolkit styling using the *A.E.T.H.E.R.* definition
+```bash
+cp .config/gtk-3.0/aether-win-menu.css "$HOME/.config/gtk-3.0/gtk.css"
+```
+
+#### Vector Beta: Symlink Grafting (Recommended for Developers)
+Choose this if you want to actively track upstreams, pull repository updates, or push your own modifications back. This maps live links directly into your `.config` folder.
+
+- Step 1: Pre-initialize user space structures
+```bash
+mkdir -p "$HOME/.config/gtk-3.0"
+```
+
+- Step 2: Clean legacy nodes to prevent multi-nesting link corruption
+```bash
+rm -rf "$HOME/.config/dunst" "$HOME/.config/hypr" "$HOME/.config/swayidle" "$HOME/.config/waybar" "$HOME/.config/wlogout" "$HOME/.config/wofi"
+rm -f "$HOME/.config/gtk-3.0/gtk.css"
+```
+
+- Step 3: Inject live symbolic links targeting the A.E.T.H.E.R. blueprint
+```bash
+ln -s "$(pwd)/.config/dunst" "$HOME/.config/dunst"
+ln -s "$(pwd)/.config/hypr" "$HOME/.config/hypr"
+ln -s "$(pwd)/.config/swayidle" "$HOME/.config/swayidle"
+ln -s "$(pwd)/.config/waybar" "$HOME/.config/waybar"
+ln -s "$(pwd)/.config/wlogout" "$HOME/.config/wlogout"
+ln -s "$(pwd)/.config/wofi" "$HOME/.config/wofi"
+```
+
+- Step 4: Link the custom GTK layout definition as the primary system stylesheet
+```bash
+ln -s "$(pwd)/.config/gtk-3.0/aether-win-menu.css" "$HOME/.config/gtk-3.0/aether-win-menu.css"
+```
+
+
+---
+
+
 ## 🚀 Post-Installation & Manual Adjustments
 
 *A.E.T.H.E.R.* is configured out of the box for hybrid laptops, but requires minimal path alignment
@@ -181,7 +274,7 @@ Or specify a script' full path in the dedicated line of code.
 
 ### 3. Tailor Your Graphic Profile (Dual-GPU Configuration)
 
-AETHER provides a split variable map to toggle hardware rendering profiles.
+*A.E.T.H.E.R.* provides a split variable map to toggle hardware rendering profiles.
 By default, paths are un-commented to utilize the integrated Intel graphics chip (`iGPU`) to optimize laptop battery life.
 
 If you want to unlock the full power of an Nvidia dedicated card (`dGPU`), open `./.config/hypr/modules/vars.lua`,
